@@ -1,0 +1,46 @@
+# U-Net Baseline Configuration for JSRT Dataset
+# Model: U-Net with Dice+BCE loss
+# Target: Lung segmentation
+
+model:
+  architecture: unet
+  n_channels: 1
+  n_classes: 2
+  base_features: 64
+  bilinear: true
+
+data:
+  dataset: jsrt
+  data_root: /home/mohaisen_mohammed/Datasets/JSRT
+  target_size: 1024
+  batch_size: 8
+  num_workers: 4
+
+training:
+  epochs: 80
+  optimizer: adamw
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  loss: dice_bce
+  scheduler: cosine
+  early_stopping_patience: 15
+  use_amp: true
+
+augmentation:
+  rotation_limit: 10
+  brightness_limit: 0.2
+  contrast_limit: 0.2
+  flip_probability: 0.5
+  clahe_probability: 0.3
+  noise_probability: 0.2
+
+reproducibility:
+  seed: 42
+  cudnn_deterministic: true
+  cudnn_benchmark: false
+
+# Expected performance (for reference)
+expected_metrics:
+  dice: 0.95+
+  iou: 0.90+
+  bf_score: 0.85+
