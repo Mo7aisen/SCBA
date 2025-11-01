@@ -63,12 +63,15 @@ echo "----------------------------------------" | tee -a "${MAIN_LOG}"
 
 if [ -f "/home/mohaisen_mohammed/Datasets/JSRT/images" ] || [ -d "/home/mohaisen_mohammed/Datasets/JSRT/images" ]; then
     echo "Training U-Net on JSRT..." | tee -a "${MAIN_LOG}"
+    # Set CUDA memory management
+    export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+
     python -m scba.train.train_seg \
         --data jsrt \
         --data_root /home/mohaisen_mohammed/Datasets/JSRT \
         --arch unet \
         --epochs 80 \
-        --batch_size 4 \
+        --batch_size 2 \
         --lr 0.0001 \
         --loss dice_bce \
         --amp \
@@ -76,6 +79,7 @@ if [ -f "/home/mohaisen_mohammed/Datasets/JSRT/images" ] || [ -d "/home/mohaisen
         --save "${RUN_DIR}/jsrt_unet_baseline_${TIMESTAMP}.pt" \
         --save_dir "${RUN_DIR}" \
         --seed 42 \
+        --num_workers 2 \
         >> "${LOG_DIR}/train_jsrt_${TIMESTAMP}.log" 2>&1 &
 
     TRAIN_JSRT_PID=$!
@@ -97,12 +101,14 @@ echo "----------------------------------------" | tee -a "${MAIN_LOG}"
 
 if [ -f "/home/mohaisen_mohammed/Datasets/Montgomery/CXR_png" ] || [ -d "/home/mohaisen_mohammed/Datasets/Montgomery/CXR_png" ]; then
     echo "Training U-Net on Montgomery..." | tee -a "${MAIN_LOG}"
+    export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+
     python -m scba.train.train_seg \
         --data montgomery \
         --data_root /home/mohaisen_mohammed/Datasets/Montgomery \
         --arch unet \
         --epochs 80 \
-        --batch_size 4 \
+        --batch_size 2 \
         --lr 0.0001 \
         --loss dice_bce \
         --amp \
@@ -110,6 +116,7 @@ if [ -f "/home/mohaisen_mohammed/Datasets/Montgomery/CXR_png" ] || [ -d "/home/m
         --save "${RUN_DIR}/montgomery_unet_baseline_${TIMESTAMP}.pt" \
         --save_dir "${RUN_DIR}" \
         --seed 42 \
+        --num_workers 2 \
         >> "${LOG_DIR}/train_montgomery_${TIMESTAMP}.log" 2>&1 &
 
     TRAIN_MONT_PID=$!
