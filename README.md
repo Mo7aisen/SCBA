@@ -160,8 +160,4 @@ This project is licensed under the MIT License - see LICENSE file for details.
 
 ## Contact
 
-For questions or collaboration inquiries, please open an issue or contact [your-email].
-
----
-
-**Status**: Active Development | Phase A (Scaffolding & Data)
+For questions or collaboration inquiries, please open an issue on GitHub.

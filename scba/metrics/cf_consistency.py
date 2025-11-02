@@ -9,7 +9,7 @@ Novel metrics to evaluate whether XAI explanations follow causal edits:
 """
 
 import numpy as np
-from typing import Dict, Tuple
+from typing import Dict, Optional, Tuple
 
 
 def attribution_mass_roi(saliency: np.ndarray, roi: np.ndarray) -> float:
@@ -277,7 +277,3 @@ def compute_cf_metrics(
         "entropy_original": entropy_orig,
         "entropy_perturbed": entropy_pert,
     }
-
-
-# Add missing import
-from typing import Optional

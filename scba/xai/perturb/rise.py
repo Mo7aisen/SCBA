@@ -62,6 +62,11 @@ class RISE(ExplainerBase):
         image = self._prepare_image(image)
         _, C, H, W = image.shape
 
+        # Adjust batch size for large images to avoid OOM
+        if H * W > 512 * 512 and batch_size > 8:
+            batch_size = 4  # Reduce for memory efficiency
+            print(f"  Reduced RISE batch_size to {batch_size} for {H}x{W} image")
+
         # Generate random masks
         masks = self._generate_random_masks(
             H, W, n_masks, mask_probability, cell_size
@@ -92,6 +97,11 @@ class RISE(ExplainerBase):
             # Accumulate weighted masks
             for j, score in enumerate(scores):
                 importance_map += batch_masks[j] * score.cpu().item()
+
+            # Clear GPU memory after each batch
+            del batch_masks_t, masked_images, outputs, scores
+            if self.device.type == "cuda":
+                torch.cuda.empty_cache()
 
         # Normalize by number of masks
         importance_map /= n_masks

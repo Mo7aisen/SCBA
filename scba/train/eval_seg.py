@@ -25,7 +25,7 @@ from scba.train.metrics import boundary_f_score, dice_coefficient, iou_score, pi
 @torch.no_grad()
 def evaluate_model(model, dataloader, device, compute_bf_score=True):
     """
-    Evaluate model on a dataset.
+    Evaluate model on a dataset with proper memory management.
 
     Returns:
         dict of metrics
@@ -39,6 +39,10 @@ def evaluate_model(model, dataloader, device, compute_bf_score=True):
     all_sensitivity = []
     all_specificity = []
 
+    # Clear GPU cache before evaluation
+    if device.type == "cuda":
+        torch.cuda.empty_cache()
+
     pbar = tqdm(dataloader, desc="Evaluating")
     for batch in pbar:
         images = batch["image"].to(device)
@@ -50,13 +54,17 @@ def evaluate_model(model, dataloader, device, compute_bf_score=True):
         # Get predictions
         preds = torch.argmax(outputs, dim=1)
 
+        # Move to CPU immediately to free GPU memory
+        preds_cpu = preds.cpu()
+        masks_cpu = masks.cpu()
+
         # Compute metrics per sample
         batch_size = images.shape[0]
         for i in range(batch_size):
-            pred = preds[i]
-            target = masks[i]
+            pred = preds_cpu[i]
+            target = masks_cpu[i]
 
-            # Dice and IoU
+            # Dice and IoU (keep on CPU)
             dice = dice_coefficient(pred.unsqueeze(0).unsqueeze(0), target.unsqueeze(0))
             iou = iou_score(pred.unsqueeze(0).unsqueeze(0), target.unsqueeze(0))
             acc = pixel_accuracy(pred.unsqueeze(0).unsqueeze(0), target.unsqueeze(0))
@@ -72,8 +80,13 @@ def evaluate_model(model, dataloader, device, compute_bf_score=True):
 
             # Boundary F-score (slower, optional)
             if compute_bf_score:
-                bf = boundary_f_score(pred.cpu().numpy(), target.cpu().numpy())
+                bf = boundary_f_score(pred.numpy(), target.numpy())
                 all_bf_scores.append(bf)
+
+        # Clear GPU memory after each batch
+        if device.type == "cuda":
+            del images, masks, outputs, preds
+            torch.cuda.empty_cache()
 
     metrics = {
         "dice": np.mean(all_dice),
@@ -93,12 +106,16 @@ def evaluate_model(model, dataloader, device, compute_bf_score=True):
 
 
 def visualize_predictions(model, dataset, device, n_samples=8, save_path=None):
-    """Visualize model predictions."""
+    """Visualize model predictions with proper memory management."""
     model.eval()
 
     fig, axes = plt.subplots(n_samples, 4, figsize=(12, 3 * n_samples))
 
     indices = np.random.choice(len(dataset), size=min(n_samples, len(dataset)), replace=False)
+
+    # Clear GPU cache before visualization
+    if device.type == "cuda":
+        torch.cuda.empty_cache()
 
     for i, idx in enumerate(indices):
         sample = dataset[idx]
@@ -112,6 +129,11 @@ def visualize_predictions(model, dataset, device, n_samples=8, save_path=None):
         # Convert image for display
         img_display = image.squeeze().cpu().numpy()
         mask_display = mask.numpy()
+
+        # Clear GPU memory after each sample
+        if device.type == "cuda":
+            del image, output
+            torch.cuda.empty_cache()
 
         # Plot
         axes[i, 0].imshow(img_display, cmap="gray")
@@ -163,8 +185,8 @@ def main():
     parser.add_argument("--target_size", type=int, default=1024, help="Target image size")
 
     # Evaluation
-    parser.add_argument("--batch_size", type=int, default=8, help="Batch size")
-    parser.add_argument("--num_workers", type=int, default=4, help="Number of workers")
+    parser.add_argument("--batch_size", type=int, default=1, help="Batch size (default=1 for memory efficiency)")
+    parser.add_argument("--num_workers", type=int, default=2, help="Number of workers")
     parser.add_argument("--visualize", action="store_true", help="Generate visualizations")
     parser.add_argument("--n_vis", type=int, default=8, help="Number of samples to visualize")
     parser.add_argument("--out", type=str, default="eval_results", help="Output directory")
@@ -177,13 +199,19 @@ def main():
 
     # Load checkpoint
     print(f"Loading checkpoint from {args.ckpt}...")
-    checkpoint = torch.load(args.ckpt, map_location=device)
+    checkpoint = torch.load(args.ckpt, map_location=device, weights_only=False)
 
     # Create model
     model = UNet(n_channels=1, n_classes=2)
     model.load_state_dict(checkpoint["model_state_dict"])
     model = model.to(device)
+    model.eval()  # Set to eval mode
     print(f"✓ Loaded model from epoch {checkpoint.get('epoch', 'unknown')}")
+
+    # Clear GPU cache after model loading
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+        print(f"✓ GPU memory cleared. Available: {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f} GB")
 
     # Data root
     if args.data_root is None:
@@ -211,8 +239,21 @@ def main():
 
     print(f"Evaluating on {len(dataset)} samples from {args.data} {args.split} split")
 
-    # Evaluate
-    metrics, all_dice, all_iou = evaluate_model(model, dataloader, device)
+    # Evaluate with error handling
+    try:
+        metrics, all_dice, all_iou = evaluate_model(model, dataloader, device)
+    except RuntimeError as e:
+        if "out of memory" in str(e):
+            print("\n⚠ GPU out of memory! Trying with smaller batch size...")
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+            # Reduce batch size and retry
+            dataloader = DataLoader(
+                dataset, batch_size=1, shuffle=False, num_workers=0, pin_memory=False
+            )
+            metrics, all_dice, all_iou = evaluate_model(model, dataloader, device)
+        else:
+            raise e
 
     # Print results
     print("\n" + "=" * 50)

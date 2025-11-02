@@ -33,7 +33,7 @@ cd "${PROJECT_ROOT}"
 # Phase 1: Data Preparation
 ################################################################################
 echo "" | tee -a "${MAIN_LOG}"
-echo "[Phase 1/5] Data Preparation" | tee -a "${MAIN_LOG}"
+echo "[Phase 1/6] Data Preparation" | tee -a "${MAIN_LOG}"
 echo "----------------------------------------" | tee -a "${MAIN_LOG}"
 
 # JSRT
@@ -58,7 +58,7 @@ echo "✓ Data preparation complete" | tee -a "${MAIN_LOG}"
 # Phase 2: Baseline Training (JSRT)
 ################################################################################
 echo "" | tee -a "${MAIN_LOG}"
-echo "[Phase 2/5] Baseline Model Training - JSRT" | tee -a "${MAIN_LOG}"
+echo "[Phase 2/6] Baseline Model Training - JSRT" | tee -a "${MAIN_LOG}"
 echo "----------------------------------------" | tee -a "${MAIN_LOG}"
 
 if [ -f "/home/mohaisen_mohammed/Datasets/JSRT/images" ] || [ -d "/home/mohaisen_mohammed/Datasets/JSRT/images" ]; then
@@ -96,7 +96,7 @@ fi
 # Phase 3: Baseline Training (Montgomery)
 ################################################################################
 echo "" | tee -a "${MAIN_LOG}"
-echo "[Phase 3/5] Baseline Model Training - Montgomery" | tee -a "${MAIN_LOG}"
+echo "[Phase 3/6] Baseline Model Training - Montgomery" | tee -a "${MAIN_LOG}"
 echo "----------------------------------------" | tee -a "${MAIN_LOG}"
 
 if [ -f "/home/mohaisen_mohammed/Datasets/Montgomery/CXR_png" ] || [ -d "/home/mohaisen_mohammed/Datasets/Montgomery/CXR_png" ]; then
@@ -133,7 +133,7 @@ fi
 # Phase 4: Model Evaluation
 ################################################################################
 echo "" | tee -a "${MAIN_LOG}"
-echo "[Phase 4/5] Model Evaluation" | tee -a "${MAIN_LOG}"
+echo "[Phase 4/6] Model Evaluation" | tee -a "${MAIN_LOG}"
 echo "----------------------------------------" | tee -a "${MAIN_LOG}"
 
 # Find trained models
@@ -167,10 +167,51 @@ if [ -n "${MONT_MODEL}" ]; then
 fi
 
 ################################################################################
-# Phase 5: Summary
+# Phase 5: Counterfactual Sweep Experiments
 ################################################################################
 echo "" | tee -a "${MAIN_LOG}"
-echo "[Phase 5/5] Pipeline Summary" | tee -a "${MAIN_LOG}"
+echo "[Phase 5/6] Counterfactual Sweep Experiments" | tee -a "${MAIN_LOG}"
+echo "----------------------------------------" | tee -a "${MAIN_LOG}"
+
+# Find trained models
+JSRT_MODEL=$(ls -t "${RUN_DIR}"/jsrt_unet_baseline_*.pt 2>/dev/null | head -1 || echo "")
+MONT_MODEL=$(ls -t "${RUN_DIR}"/montgomery_unet_baseline_*.pt 2>/dev/null | head -1 || echo "")
+
+if [ -n "${JSRT_MODEL}" ]; then
+    echo "Running CF sweep on JSRT model: ${JSRT_MODEL}" | tee -a "${MAIN_LOG}"
+    python -m scba.scripts.run_cf_sweep \
+        --data jsrt \
+        --data_root /home/mohaisen_mohammed/Datasets/JSRT \
+        --ckpt "${JSRT_MODEL}" \
+        --methods seg_grad_cam \
+        --border_radii 2,4,8 \
+        --lesion_sigmas 4,8,12 \
+        --n_samples 20 \
+        --out "${RESULTS_DIR}/jsrt_cf_sweep" \
+        >> "${LOG_DIR}/cf_sweep_jsrt_${TIMESTAMP}.log" 2>&1
+    echo "✓ JSRT CF sweep complete" | tee -a "${MAIN_LOG}"
+fi
+
+if [ -n "${MONT_MODEL}" ]; then
+    echo "Running CF sweep on Montgomery model: ${MONT_MODEL}" | tee -a "${MAIN_LOG}"
+    python -m scba.scripts.run_cf_sweep \
+        --data montgomery \
+        --data_root /home/mohaisen_mohammed/Datasets/Montgomery \
+        --ckpt "${MONT_MODEL}" \
+        --methods seg_grad_cam \
+        --border_radii 2,4,8 \
+        --lesion_sigmas 4,8,12 \
+        --n_samples 20 \
+        --out "${RESULTS_DIR}/montgomery_cf_sweep" \
+        >> "${LOG_DIR}/cf_sweep_montgomery_${TIMESTAMP}.log" 2>&1
+    echo "✓ Montgomery CF sweep complete" | tee -a "${MAIN_LOG}"
+fi
+
+################################################################################
+# Phase 6: Summary
+################################################################################
+echo "" | tee -a "${MAIN_LOG}"
+echo "[Phase 6/6] Pipeline Summary" | tee -a "${MAIN_LOG}"
 echo "----------------------------------------" | tee -a "${MAIN_LOG}"
 
 echo "" | tee -a "${MAIN_LOG}"

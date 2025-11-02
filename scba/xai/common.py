@@ -213,11 +213,28 @@ def explain(
         - occlusion: Occlusion
     """
     # Import here to avoid circular dependencies
-    from scba.xai.cam.seg_grad_cam import SegGradCAM
+    from scba.xai.cam.seg_grad_cam import SegGradCAM, SegXResCAM
+    from scba.xai.cam.hires_cam import HiResCAM
+    from scba.xai.cam.grad_cam_pp import GradCAMPlusPlus
+    from scba.xai.perturb.rise import RISE
+    from scba.xai.perturb.occlusion import Occlusion
+    from scba.xai.perturb.lime_seg import LIMESegmentation
+    from scba.xai.perturb.shap_seg import KernelSHAPSegmentation
+    from scba.xai.gradient.integrated_gradients import IntegratedGradients
 
     method_map = {
+        # Gradient-based CAM methods
         "seg_grad_cam": SegGradCAM,
-        # More methods will be added as we implement them
+        "seg_xres_cam": SegXResCAM,
+        "hires_cam": HiResCAM,
+        "grad_cam_pp": GradCAMPlusPlus,
+        # Gradient-based attribution
+        "integrated_gradients": IntegratedGradients,
+        # Perturbation-based methods
+        "rise": RISE,
+        "occlusion": Occlusion,
+        "lime": LIMESegmentation,
+        "shap": KernelSHAPSegmentation,
     }
 
     if method not in method_map:

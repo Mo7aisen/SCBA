@@ -22,7 +22,7 @@ class BorderEditConfig:
     radius_px: int = 4  # Morphology radius
     operation: str = "dilate"  # 'dilate', 'erode', 'open', 'close'
     band_px: int = 12  # Width of ROI band around contour
-    area_budget: float = 0.10  # Max |Δarea| as fraction
+    area_budget: float = 0.50  # Max |Δarea| as fraction (increased from 0.10 to 0.50 for realistic edits)
     seed: int = 42  # Random seed
     blend_method: str = "poisson"  # 'poisson' or 'alpha'
 
@@ -56,12 +56,29 @@ class BorderEditor:
         """
         np.random.seed(self.config.seed)
 
+        # Ensure proper input formats
+        if image.dtype != np.float32:
+            image = image.astype(np.float32)
+        if image.max() > 1.0:
+            image = image / 255.0
+        if mask.dtype != np.uint8:
+            mask = mask.astype(np.uint8)
+        # Binarize mask if needed
+        if mask.max() > 1:
+            mask = (mask > 127).astype(np.uint8)
+
         # 1. Morphological perturbation
         perturbed_mask = self._morph_edit(mask)
 
         # 2. Validate area budget
+        area_orig = int(mask.sum())
+        area_pert = int(perturbed_mask.sum())
+        delta_area = abs(area_pert - area_orig) / float(max(area_orig, 1))
+
         if not self._check_area_budget(mask, perturbed_mask):
-            print(f"Warning: Area budget exceeded, using original mask")
+            print(f"Warning: Area budget ({self.config.area_budget:.2f}) exceeded (Δ={delta_area:.3f})")
+            print(f"  Original area: {area_orig}, Perturbed area: {area_pert}")
+            print(f"  Using smaller radius or increase area_budget")
             perturbed_mask = mask.copy()
 
         # 3. Extract ROI band (symmetric contour band)
@@ -97,13 +114,14 @@ class BorderEditor:
 
     def _check_area_budget(self, mask_orig: np.ndarray, mask_pert: np.ndarray) -> bool:
         """Check if area change is within budget."""
-        area_orig = mask_orig.sum()
-        area_pert = mask_pert.sum()
+        # Use int() to avoid overflow with large numpy ints
+        area_orig = int(mask_orig.sum())
+        area_pert = int(mask_pert.sum())
 
         if area_orig == 0:
             return True
 
-        delta_area = abs(area_pert - area_orig) / area_orig
+        delta_area = abs(area_pert - area_orig) / float(area_orig)
         return delta_area <= self.config.area_budget
 
     def _extract_roi_band(
@@ -227,6 +245,7 @@ def apply_border_edit(
     radius_px: int = 4,
     operation: str = "dilate",
     band_px: int = 12,
+    area_budget: float = 0.50,
     seed: int = 42,
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
@@ -235,16 +254,21 @@ def apply_border_edit(
     Args:
         image: (H, W) float32 image in [0, 1]
         mask: (H, W) uint8 binary mask
-        radius_px: Morphology radius
+        radius_px: Morphology radius (default=4, try 2-3 for smaller changes)
         operation: 'dilate', 'erode', 'open', 'close'
         band_px: ROI band width
+        area_budget: Max area change as fraction (default=0.50 for 50% change)
         seed: Random seed
 
     Returns:
         (perturbed_image, perturbed_mask, roi_band)
     """
     config = BorderEditConfig(
-        radius_px=radius_px, operation=operation, band_px=band_px, seed=seed
+        radius_px=radius_px,
+        operation=operation,
+        band_px=band_px,
+        area_budget=area_budget,
+        seed=seed
     )
     editor = BorderEditor(config)
     return editor.apply_border_edit(image, mask)

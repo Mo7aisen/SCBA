@@ -42,14 +42,19 @@ ENV/
 # Data
 data/
 datasets/
-*.png
-*.jpg
-*.jpeg
 *.dcm
 *.nii
 *.nii.gz
 *.h5
 *.hdf5
+
+# Images (except manuscript figures)
+*.png
+*.jpg
+*.jpeg
+!manuscript/figures/*.png
+!manuscript/figures/*.jpg
+!assets/*.png
 
 # Model checkpoints
 runs/

@@ -66,8 +66,9 @@ class Occlusion(ExplainerBase):
             for x in range(0, W - patch_size + 1, stride):
                 positions.append((y, x))
 
-        # Process in batches for efficiency
-        batch_size = 64
+        # Process in batches for efficiency (auto-adjust for large images)
+        batch_size = 2 if H * W > 512 * 512 else 8
+        print(f"  Occlusion batch_size: {batch_size} for {H}x{W} image ({len(positions)} positions)")
         for i in tqdm(range(0, len(positions), batch_size), desc="Occlusion"):
             batch_positions = positions[i : i + batch_size]
             batch_images = []
@@ -91,6 +92,11 @@ class Occlusion(ExplainerBase):
                 importance = baseline_score - scores[j].item()
                 importance_map[y : y + patch_size, x : x + patch_size] += importance
                 counts[y : y + patch_size, x : x + patch_size] += 1
+
+            # Clear GPU memory after each batch
+            del batch_images, outputs, scores
+            if self.device.type == "cuda":
+                torch.cuda.empty_cache()
 
         # Average overlapping regions
         importance_map = importance_map / (counts + 1e-10)

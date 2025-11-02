@@ -42,6 +42,13 @@ def analyze_dataset(data_root: Path, out_dir: Path):
     def find_mask(patient_id, side):
         """Find mask with either _0 or _1 suffix."""
         mask_dir = masks_dir / f"{side}Mask"
+
+        # First try direct match (patient_id already has _0 suffix)
+        mask_path = mask_dir / f"{patient_id}.png"
+        if mask_path.exists():
+            return mask_path
+
+        # If patient_id doesn't have suffix, try adding _0 or _1
         for suffix in ["_0", "_1"]:
             mask_path = mask_dir / f"{patient_id}{suffix}.png"
             if mask_path.exists():
