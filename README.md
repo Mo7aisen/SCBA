@@ -4,147 +4,144 @@
 
 ## Overview
 
-SCBA introduces a novel methodology to evaluate whether explainable AI (XAI) methods for medical image segmentation produce faithful, stable, and clinically meaningful attributions. By generating controlled, realistic perturbations at organ borders and inserting synthetic lesions, we can systematically audit whether explanations track causal changes in the image.
+SCBA introduces a novel framework for evaluating the consistency of gradient-based attribution methods (Grad-CAM variants) in medical image segmentation. By generating controlled boundary perturbations in chest X-ray lung segmentation, we systematically test whether explanation methods respond appropriately to counterfactual changes.
 
 ## Key Features
 
-- **Synthetic Counterfactual Generation**: Realistic border edits and Gaussian nodule surrogates
-- **Comprehensive XAI Baselines**: 12+ methods including Seg-Grad-CAM, RISE, LIME, SHAP, IG, LRP
-- **Novel Metrics**: Attribution Mass in ROI (AM-ROI), Center of Attribution shift (CoA-Δ), Directional Consistency
-- **Robustness Suite**: Benign perturbations, domain shift, adversarial tests, sanity checks
-- **Clinical Deployment**: DICOM SEG/SR export, PACS integration, triptych viewer
-- **User Study Framework**: Application-grounded evaluation with radiologists
+- **Synthetic Counterfactual Generation**: Morphological border perturbations with Poisson blending
+- **Grad-CAM Variants**: Seg-Grad-CAM, HiResCAM, Grad-CAM++ implementations
+- **Novel Consistency Metrics**: Attribution Mass in ROI (ΔAM-ROI), Center of Attribution Shift, Directional Consistency
+- **Statistical Validation**: Bootstrap confidence intervals, hypothesis testing with Bonferroni correction
+- **Conference Manuscript**: Complete LaTeX source with figures and references
 
 ## Installation
 
 ### Requirements
 
-- Python 3.9+
-- CUDA 11.8+ (recommended for GPU acceleration)
-- 16GB+ RAM
-- 8GB+ GPU memory (for training)
+- Python 3.8+
+- PyTorch 2.0+
+- CUDA-capable GPU (recommended)
 
 ### Setup
 
 ```bash
 # Clone repository
-git clone https://github.com/your-org/scba.git
-cd scba
+git clone https://github.com/Mo7aisen/SCBA.git
+cd SCBA
 
-# Create conda environment
-conda env create -f env/environment.yml
-conda activate scba
-
-# Install pre-commit hooks
-pre-commit install
+# Install dependencies
+pip install -r requirements.txt
 ```
 
-## Quick Start
+## Usage
 
-### 1. Prepare Datasets
+### Running Experiments
 
 ```bash
-# JSRT dataset
-python -m scba.scripts.prep_jsrt --data_root /path/to/jsrt --out data/jsrt
+# Run main publication experiments
+python run_publication_experiments.py
 
-# Montgomery dataset
-python -m scba.scripts.prep_montgomery --data_root /path/to/montgomery --out data/montgomery
+# Run ablation study (perturbation magnitude)
+python run_ablation_study.py
+
+# Generate visual comparison figures
+python generate_visual_comparison.py
 ```
 
-### 2. Train Baseline Model
+### Using Individual Components
 
-```bash
-python -m scba.train.train_seg \
-  --data jsrt \
-  --arch unet \
-  --epochs 80 \
-  --amp \
-  --save runs/jsrt_unet.pt
-```
+```python
+from scba.cf.borders import apply_border_edit
+from scba.xai.cam.seg_grad_cam import SegGradCAM
 
-### 3. Run Counterfactual Sweep
+# Generate counterfactual
+img_cf, mask_cf, roi = apply_border_edit(
+    image=image,
+    mask=predicted_mask,
+    radius_px=3,
+    operation='dilate'
+)
 
-```bash
-python -m scba.scripts.run_cf_sweep \
-  --data jsrt \
-  --ckpt runs/jsrt_unet.pt \
-  --methods seg_grad_cam,rise,lime,shap \
-  --border_radii 2,4,8 \
-  --lesion_sigmas 4,8,12 \
-  --out results/jsrt_cf
-```
-
-### 4. Launch Interactive UI
-
-```bash
-python -m scba.ui.app --demo assets/demo_jsrt
+# Compute attribution
+explainer = SegGradCAM(model, device='cuda', target_layer=model.outc.conv)
+attribution = explainer(image)
 ```
 
 ## Project Structure
 
 ```
-scba/
-├── scba/
-│   ├── data/           # Data loaders and transforms
-│   ├── models/         # Segmentation architectures
-│   ├── xai/           # XAI methods (CAM, perturbation-based)
-│   ├── cf/            # Counterfactual generators
-│   ├── metrics/       # Evaluation metrics
-│   ├── robustness/    # Robustness test suite
-│   ├── ui/            # Interactive viewer and study mode
-│   ├── train/         # Training and evaluation scripts
-│   └── scripts/       # Data prep and sweep scripts
-├── experiments/       # Configs and results
-├── tests/            # Unit and integration tests
-└── env/              # Environment specifications
+SCBA/
+├── scba/                       # Core package
+│   ├── cf/                     # Counterfactual generation
+│   │   └── borders.py          # Border manipulation
+│   ├── data/                   # Data loaders
+│   │   └── loaders/
+│   │       └── jsrt.py         # JSRT dataset
+│   ├── metrics/                # Evaluation metrics
+│   │   └── cf_consistency.py   # Consistency metrics
+│   ├── models/                 # Segmentation models
+│   │   └── unet.py             # U-Net architecture
+│   └── xai/                    # XAI methods
+│       └── cam/                # Grad-CAM variants
+│           ├── seg_grad_cam.py
+│           ├── hires_cam.py
+│           └── grad_cam_pp.py
+├── manuscript/                 # Conference paper
+│   ├── scba_manuscript.tex
+│   ├── references.bib
+│   └── figures/
+├── run_*.py                    # Experiment scripts
+└── tests/                      # Unit tests
 ```
 
 ## Datasets
 
-SCBA is designed for chest X-ray datasets with lung segmentation masks:
+The framework is evaluated on the **JSRT** (Japanese Society of Radiological Technology) chest X-ray dataset:
 
-- **JSRT**: 247 PA chest X-rays (2048×2048)
-- **Montgomery**: 138 PA chest X-rays with TB screening
-- **Optional**: Shenzhen, SIIM-ACR Pneumothorax, CheXmask
-
-See `docs/datasets.md` for detailed preparation instructions.
+- 247 posteroanterior chest radiographs
+- Expert-annotated lung segmentation masks
+- Images: 2048×2048 resolution
 
 ## Methods
 
-### XAI Methods Implemented
+### XAI Methods
 
-**Gradient-based:**
-- Seg-Grad-CAM, Seg-XRes-CAM, HiResCAM
-- Grad-CAM++, Guided Grad-CAM
-- Integrated Gradients, LRP
+**Grad-CAM Variants:**
+- Seg-Grad-CAM
+- HiResCAM
+- Grad-CAM++
 
-**Perturbation-based:**
-- RISE, LIME, SHAP, Occlusion
+### Counterfactual Generation
 
-### Counterfactual Perturbations
+**Border Perturbations:**
+- Morphological dilation/erosion (radius 2-3 pixels)
+- Poisson blending for realistic synthesis
 
-1. **Border Edits**: Morphological operations + TPS warping + Poisson blending
-2. **Gaussian Nodules**: Realistic lesion surrogates with intensity matching
-3. **Repair Operations**: Inpainting to reverse perturbations
+### Consistency Metrics
 
-### Evaluation Metrics
+- **ΔAM-ROI**: Attribution mass change in region of interest
+- **CoA Shift**: Center of attribution spatial displacement
+- **Directional Consistency**: Attribution movement toward/from ROI
 
-- **Faithfulness**: Deletion/Insertion AUC
-- **CF Consistency**: AM-ROI, ΔAM-ROI, CoA-Δ, Directional Consistency
-- **Stability**: SSIM, Pearson correlation under benign noise
-- **Localization**: IoU, pointing game accuracy
-- **Sanity Checks**: Parameter/input randomization
+## Results
+
+Key findings from evaluation on 38 JSRT test samples:
+
+- **Method Equivalence**: Seg-Grad-CAM, HiResCAM produce nearly identical outputs (Dice > 0.99)
+- **Grad-CAM++ Distinctiveness**: Shows significantly different behavior with negative ΔAM-ROI (-0.0011 vs +0.0039, p<0.001)
+- **Stability**: Grad-CAM++ exhibits 30% smaller spatial shifts (3.42 vs 4.92 pixels)
+- **Statistical Significance**: Large effect sizes (Cohen's d = 0.92) with rigorous validation
 
 ## Citation
 
-If you use SCBA in your research, please cite:
+If you use this code in your research, please cite:
 
 ```bibtex
-@inproceedings{scba2024,
-  title={Synthetic Counterfactual Border Audit for Segmentation Explainability in Chest X-rays},
-  author={TBD},
-  booktitle={Medical Image Computing and Computer Assisted Intervention (MICCAI)},
-  year={2024}
+@article{mohammed2025scba,
+  title={Counterfactual Consistency Auditing of Grad-CAM Methods for Lung Segmentation in Chest X-rays},
+  author={Mohammed, Mohaisen},
+  journal={arXiv preprint},
+  year={2025}
 }
 ```
 
