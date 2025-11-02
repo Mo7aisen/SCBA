@@ -72,23 +72,10 @@ attribution = explainer(image)
 SCBA/
 ├── scba/                       # Core package
 │   ├── cf/                     # Counterfactual generation
-│   │   └── borders.py          # Border manipulation
 │   ├── data/                   # Data loaders
-│   │   └── loaders/
-│   │       └── jsrt.py         # JSRT dataset
 │   ├── metrics/                # Evaluation metrics
-│   │   └── cf_consistency.py   # Consistency metrics
-│   ├── models/                 # Segmentation models
-│   │   └── unet.py             # U-Net architecture
-│   └── xai/                    # XAI methods
-│       └── cam/                # Grad-CAM variants
-│           ├── seg_grad_cam.py
-│           ├── hires_cam.py
-│           └── grad_cam_pp.py
-├── manuscript/                 # Conference paper
-│   ├── scba_manuscript.tex
-│   ├── references.bib
-│   └── figures/
+│   ├── models/                 # Segmentation models (U-Net)
+│   └── xai/cam/                # Grad-CAM variants
 ├── run_*.py                    # Experiment scripts
 └── tests/                      # Unit tests
 ```
