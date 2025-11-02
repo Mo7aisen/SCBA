@@ -10,9 +10,8 @@ SCBA introduces a novel framework for evaluating the consistency of gradient-bas
 
 - **Synthetic Counterfactual Generation**: Morphological border perturbations with Poisson blending
 - **Grad-CAM Variants**: Seg-Grad-CAM, HiResCAM, Grad-CAM++ implementations
-- **Novel Consistency Metrics**: Attribution Mass in ROI (ΔAM-ROI), Center of Attribution Shift, Directional Consistency
+- **Consistency Metrics**: Attribution Mass in ROI (ΔAM-ROI), Center of Attribution Shift, Directional Consistency
 - **Statistical Validation**: Bootstrap confidence intervals, hypothesis testing with Bonferroni correction
-- **Conference Manuscript**: Complete LaTeX source with figures and references
 
 ## Installation
 
@@ -125,25 +124,7 @@ The framework is evaluated on the **JSRT** (Japanese Society of Radiological Tec
 
 ## Results
 
-Key findings from evaluation on 38 JSRT test samples:
-
-- **Method Equivalence**: Seg-Grad-CAM, HiResCAM produce nearly identical outputs (Dice > 0.99)
-- **Grad-CAM++ Distinctiveness**: Shows significantly different behavior with negative ΔAM-ROI (-0.0011 vs +0.0039, p<0.001)
-- **Stability**: Grad-CAM++ exhibits 30% smaller spatial shifts (3.42 vs 4.92 pixels)
-- **Statistical Significance**: Large effect sizes (Cohen's d = 0.92) with rigorous validation
-
-## Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@article{mohammed2025scba,
-  title={Counterfactual Consistency Auditing of Grad-CAM Methods for Lung Segmentation in Chest X-rays},
-  author={Mohammed, Mohaisen},
-  journal={arXiv preprint},
-  year={2025}
-}
-```
+Experimental validation on JSRT chest X-ray dataset demonstrating counterfactual consistency differences across Grad-CAM variants.
 
 ## License
 
@@ -152,8 +133,8 @@ This project is licensed under the MIT License - see LICENSE file for details.
 ## Acknowledgments
 
 - JSRT Database: Japanese Society of Radiological Technology
-- Montgomery & Shenzhen datasets: Jaeger et al., 2014
-- Seg-Grad-CAM: Vinogradova et al., AAAI 2020
+- U-Net: Ronneberger et al., 2015
+- Grad-CAM: Selvaraju et al., 2017
 
 ## Contact
 
