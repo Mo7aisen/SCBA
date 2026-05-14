@@ -1,0 +1,5049 @@
+{
+  "dataset": "jsrt",
+  "seed": 42,
+  "model_path": "/home/mohaisen_mohammed/SCBA/runs/jsrt_unet_baseline_20251101_203253.pt",
+  "data_root": "/home/mohaisen_mohammed/Datasets/JSRT",
+  "radii": [
+    4,
+    5
+  ],
+  "n_samples": 38,
+  "mask_source": "pred",
+  "method_aggregates": {
+    "multi_layer_cam": {
+      "dilate_r4": {
+        "radius": 4,
+        "n_experiments": 38,
+        "mean_delta_am_roi": 0.004329626497469451,
+        "std_delta_am_roi": 0.007427453407341653,
+        "mean_shift_distance": 5.962038018695638,
+        "std_shift_distance": 5.6324244419518115,
+        "mean_dc": 0.4473684210526316,
+        "std_dc": 0.4972222007287152,
+        "mean_ssim": 0.9847080527914851,
+        "std_ssim": 0.008486028160735092,
+        "mean_perceptual_distance": 0.06701313214490941,
+        "mean_intensity_delta": 0.006433011215488819
+      },
+      "dilate_r5": {
+        "radius": 5,
+        "n_experiments": 38,
+        "mean_delta_am_roi": 0.00492047106749133,
+        "std_delta_am_roi": 0.007556785204028609,
+        "mean_shift_distance": 6.763047351895433,
+        "std_shift_distance": 5.653931094522547,
+        "mean_dc": 0.5,
+        "std_dc": 0.5,
+        "mean_ssim": 0.9823016450530494,
+        "std_ssim": 0.00938191040607771,
+        "mean_perceptual_distance": 0.07703937446339089,
+        "mean_intensity_delta": 0.007766007741533042
+      }
+    }
+  },
+  "detailed_results": {
+    "JPCLN007": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9853724406203086,
+        "mask_pred_sum": 340019,
+        "mask_gt_sum": 336854,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.07968479504634161,
+          "insertion_auc": 0.27996345452556853,
+          "deletion_score_0": 0.32504719495773315,
+          "insertion_score_0": 0.0007598727243021131,
+          "robustness_corr_mean": 0.9962871296771945,
+          "robustness_corr_std": 0.0001753960492666805,
+          "robustness_corr_mask_n": 340019,
+          "boundary_deletion_auc": 0.33012365251779563,
+          "boundary_insertion_auc": 0.007521504262695089,
+          "robustness_corr_mean_boundary": 0.9969615031017472,
+          "robustness_corr_std_boundary": 0.0001863401784608947,
+          "robustness_corr_mask_n_boundary": 46609,
+          "robustness_corr_mean_full": 0.9996272567344882,
+          "robustness_corr_std_full": 1.7882424737947622e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.025656457990407944,
+            "am_roi_perturbed": 0.024437768384814262,
+            "am_roi_repaired": 0.02370932139456272,
+            "delta_am_roi": -0.0012186896055936813,
+            "shift_distance": 5.078417410250399,
+            "shift_y": 1.5377231378475926,
+            "shift_x": 4.8400135272602824,
+            "distance_to_roi": 3.9603391194293707,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 3.9603391194293707,
+            "dist_to_roi_original_px": 33.011642246028615,
+            "dist_to_roi_perturbed_px": 29.051303126599244,
+            "entropy_original": 12.829161643981934,
+            "entropy_perturbed": 12.819540977478027,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 62181,
+          "area_change": 0.045000426446757384,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                36,
+                947,
+                94,
+                936
+              ]
+            },
+            "validation": {
+              "ssim": 0.9728191780131754,
+              "mean_delta": 0.028992023319005966,
+              "std_delta": 0.04818745702505112
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.061012186110019684,
+          "ssim": 0.981567781315791,
+          "intensity_delta": 0.024210471659898758
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.02569018490612507,
+            "am_roi_perturbed": 0.02663065865635872,
+            "am_roi_repaired": 0.025079302489757538,
+            "delta_am_roi": 0.0009404737502336502,
+            "shift_distance": 5.711062409569455,
+            "shift_y": 1.5144553166502988,
+            "shift_x": 5.50660139649375,
+            "distance_to_roi": 4.3097368956054005,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 4.3097368956054005,
+            "dist_to_roi_original_px": 32.77663978343884,
+            "dist_to_roi_perturbed_px": 28.466902887833438,
+            "entropy_original": 12.829161643981934,
+            "entropy_perturbed": 12.825695037841797,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 66699,
+          "area_change": 0.05807616633188145,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                35,
+                948,
+                93,
+                937
+              ]
+            },
+            "validation": {
+              "ssim": 0.9716569192490175,
+              "mean_delta": 0.032410573214292526,
+              "std_delta": 0.04791754111647606
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.06097420157554249,
+          "ssim": 0.980691012628074,
+          "intensity_delta": 0.027363266795873642
+        }
+      }
+    },
+    "JPCLN010": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9707641279493225,
+        "mask_pred_sum": 234347,
+        "mask_gt_sum": 243217,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.05677508164662868,
+          "insertion_auc": 0.20686402667779474,
+          "deletion_score_0": 0.22429585456848145,
+          "insertion_score_0": 0.0005558924749493599,
+          "robustness_corr_mean": 0.9930288207569112,
+          "robustness_corr_std": 0.00030130485052420577,
+          "robustness_corr_mask_n": 234347,
+          "boundary_deletion_auc": 0.22030315026640893,
+          "boundary_insertion_auc": 0.0038676723721437155,
+          "robustness_corr_mean_boundary": 0.9895206099651217,
+          "robustness_corr_std_boundary": 0.0020933017286372596,
+          "robustness_corr_mask_n_boundary": 41701,
+          "robustness_corr_mean_full": 0.9992097624764712,
+          "robustness_corr_std_full": 5.1333201825234074e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.03402203321456909,
+            "am_roi_perturbed": 0.03490012511610985,
+            "am_roi_repaired": 0.04032003879547119,
+            "delta_am_roi": 0.0008780919015407562,
+            "shift_distance": 12.336418350488467,
+            "shift_y": 3.141364494005245,
+            "shift_x": 11.929754684572174,
+            "distance_to_roi": 10.633235011979608,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 10.633235011979608,
+            "dist_to_roi_original_px": 53.65104497732949,
+            "dist_to_roi_perturbed_px": 43.01780996534988,
+            "entropy_original": 12.558757781982422,
+            "entropy_perturbed": 12.556888580322266,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 55485,
+          "area_change": 0.0581445463351355,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                92,
+                894,
+                117,
+                907
+              ]
+            },
+            "validation": {
+              "ssim": 0.9841815437556354,
+              "mean_delta": 0.004923641681671143,
+              "std_delta": 0.03130941092967987
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.0621305707997332,
+          "ssim": 0.9909278982031589,
+          "intensity_delta": 0.01013285480439663
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.03406311944127083,
+            "am_roi_perturbed": 0.03466859832406044,
+            "am_roi_repaired": 0.042044974863529205,
+            "delta_am_roi": 0.0006054788827896118,
+            "shift_distance": 17.31665762766413,
+            "shift_y": -0.23590560910787417,
+            "shift_x": 17.3150506767185,
+            "distance_to_roi": 11.229592344808793,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 11.229592344808793,
+            "dist_to_roi_original_px": 53.337885797628175,
+            "dist_to_roi_perturbed_px": 42.10829345281938,
+            "entropy_original": 12.558757781982422,
+            "entropy_perturbed": 12.56047534942627,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 59624,
+          "area_change": 0.07555462625935044,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                91,
+                895,
+                116,
+                908
+              ]
+            },
+            "validation": {
+              "ssim": 0.9831600183903354,
+              "mean_delta": 0.009861799888312817,
+              "std_delta": 0.03287075459957123
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.06823723227716982,
+          "ssim": 0.9903180981890789,
+          "intensity_delta": 0.013438057154417038
+        }
+      }
+    },
+    "JPCLN011": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9797141487433924,
+        "mask_pred_sum": 308882,
+        "mask_gt_sum": 306473,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.05894653485884192,
+          "insertion_auc": 0.2630766220579972,
+          "deletion_score_0": 0.2952626645565033,
+          "insertion_score_0": 0.0007761873421259224,
+          "robustness_corr_mean": 0.997181981284793,
+          "robustness_corr_std": 0.00027876926792582465,
+          "robustness_corr_mask_n": 308882,
+          "boundary_deletion_auc": 0.3069985248148442,
+          "boundary_insertion_auc": 0.0072928080349811365,
+          "robustness_corr_mean_boundary": 0.9929226765301843,
+          "robustness_corr_std_boundary": 0.0023395804221399753,
+          "robustness_corr_mask_n_boundary": 45156,
+          "robustness_corr_mean_full": 0.9996556051550094,
+          "robustness_corr_std_full": 3.2933794063008785e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.02399708889424801,
+            "am_roi_perturbed": 0.02635781094431877,
+            "am_roi_repaired": 0.02956981584429741,
+            "delta_am_roi": 0.0023607220500707626,
+            "shift_distance": 2.8985497532006193,
+            "shift_y": -2.085997894562297,
+            "shift_x": -2.0125117280803693,
+            "distance_to_roi": -2.071271268250623,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -2.071271268250623,
+            "dist_to_roi_original_px": 24.15186911804297,
+            "dist_to_roi_perturbed_px": 26.223140386293593,
+            "entropy_original": 12.77777099609375,
+            "entropy_perturbed": 12.774090766906738,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 60026,
+          "area_change": 0.04798596227685653,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                91,
+                906,
+                6,
+                994
+              ]
+            },
+            "validation": {
+              "ssim": 0.9859928723004947,
+              "mean_delta": 0.005285357125103474,
+              "std_delta": 0.033723168075084686
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.03959615319035947,
+          "ssim": 0.9899093780269701,
+          "intensity_delta": 0.0010638706153258681
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.024006670340895653,
+            "am_roi_perturbed": 0.02735486440360546,
+            "am_roi_repaired": 0.030842797830700874,
+            "delta_am_roi": 0.0033481940627098083,
+            "shift_distance": 2.872047844616014,
+            "shift_y": -2.6771646688893043,
+            "shift_x": -1.0399269961945947,
+            "distance_to_roi": -2.6492577197618594,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -2.6492577197618594,
+            "dist_to_roi_original_px": 23.85382138881045,
+            "dist_to_roi_perturbed_px": 26.503079108572308,
+            "entropy_original": 12.77777099609375,
+            "entropy_perturbed": 12.775240898132324,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 64421,
+          "area_change": 0.062243834215007676,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                90,
+                907,
+                5,
+                995
+              ]
+            },
+            "validation": {
+              "ssim": 0.9847069338620462,
+              "mean_delta": 0.008430267684161663,
+              "std_delta": 0.033494316041469574
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.04592921157988409,
+          "ssim": 0.9889467984689231,
+          "intensity_delta": 0.003127101808786392
+        }
+      }
+    },
+    "JPCLN016": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9152605765498586,
+        "mask_pred_sum": 301142,
+        "mask_gt_sum": 265678,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.06180678346427158,
+          "insertion_auc": 0.2534102225326933,
+          "deletion_score_0": 0.28813713788986206,
+          "insertion_score_0": 0.0006770999170839787,
+          "robustness_corr_mean": 0.9969606413220782,
+          "robustness_corr_std": 0.0005363620562095599,
+          "robustness_corr_mask_n": 301142,
+          "boundary_deletion_auc": 0.3041745468974113,
+          "boundary_insertion_auc": 0.012516683613648638,
+          "robustness_corr_mean_boundary": 0.9900119522902321,
+          "robustness_corr_std_boundary": 0.0029227652178554944,
+          "robustness_corr_mask_n_boundary": 49647,
+          "robustness_corr_mean_full": 0.9996086376465804,
+          "robustness_corr_std_full": 5.9658898091252066e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.02801540680229664,
+            "am_roi_perturbed": 0.030918365344405174,
+            "am_roi_repaired": 0.038036756217479706,
+            "delta_am_roi": 0.0029029585421085358,
+            "shift_distance": 2.3910840454858775,
+            "shift_y": -2.222756263996871,
+            "shift_x": 0.8812703917866429,
+            "distance_to_roi": -1.6407717612937773,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -1.6407717612937773,
+            "dist_to_roi_original_px": 81.98318980477222,
+            "dist_to_roi_perturbed_px": 83.623961566066,
+            "entropy_original": 12.749846458435059,
+            "entropy_perturbed": 12.767374038696289,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 65728,
+          "area_change": 0.05412064740222221,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                67,
+                960,
+                94,
+                961
+              ]
+            },
+            "validation": {
+              "ssim": 0.9851817472813771,
+              "mean_delta": 0.0035576208028942347,
+              "std_delta": 0.040349915623664856
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.031122134687999885,
+          "ssim": 0.9892189538602326,
+          "intensity_delta": 0.010881832800805569
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.028019987046718597,
+            "am_roi_perturbed": 0.029992224648594856,
+            "am_roi_repaired": 0.03464756906032562,
+            "delta_am_roi": 0.001972237601876259,
+            "shift_distance": 0.9513621581261171,
+            "shift_y": -0.7762016956519915,
+            "shift_x": 0.5500917047014582,
+            "distance_to_roi": -0.4674287552849705,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -0.4674287552849705,
+            "dist_to_roi_original_px": 80.6592991098628,
+            "dist_to_roi_perturbed_px": 81.12672786514777,
+            "entropy_original": 12.749846458435059,
+            "entropy_perturbed": 12.762129783630371,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 70421,
+          "area_change": 0.06999687854899017,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                66,
+                961,
+                93,
+                962
+              ]
+            },
+            "validation": {
+              "ssim": 0.9844093764508524,
+              "mean_delta": 0.002618147060275078,
+              "std_delta": 0.03839149326086044
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.036928809519546725,
+          "ssim": 0.9887220476669702,
+          "intensity_delta": 0.007730784825980663
+        }
+      }
+    },
+    "JPCLN019": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9897120027644675,
+        "mask_pred_sum": 329582,
+        "mask_gt_sum": 330216,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.07380115984124132,
+          "insertion_auc": 0.270299157971749,
+          "deletion_score_0": 0.314980685710907,
+          "insertion_score_0": 0.0005613139364868402,
+          "robustness_corr_mean": 0.9974451561201385,
+          "robustness_corr_std": 1.827346690087155e-05,
+          "robustness_corr_mask_n": 329582,
+          "boundary_deletion_auc": 0.32335648238658904,
+          "boundary_insertion_auc": 0.006230136277736165,
+          "robustness_corr_mean_boundary": 0.9977309277411245,
+          "robustness_corr_std_boundary": 0.0003134511105091996,
+          "robustness_corr_mask_n_boundary": 44006,
+          "robustness_corr_mean_full": 0.9997352331234538,
+          "robustness_corr_std_full": 1.733962253412356e-06,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.024246368557214737,
+            "am_roi_perturbed": 0.02851193957030773,
+            "am_roi_repaired": 0.024664202705025673,
+            "delta_am_roi": 0.004265571013092995,
+            "shift_distance": 1.081362329299694,
+            "shift_y": -0.2705343939607019,
+            "shift_x": 1.046974512064537,
+            "distance_to_roi": 0.5431837334997134,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 0.5431837334997134,
+            "dist_to_roi_original_px": 24.126654543369824,
+            "dist_to_roi_perturbed_px": 23.58347080987011,
+            "entropy_original": 12.858498573303223,
+            "entropy_perturbed": 12.869548797607422,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 58697,
+          "area_change": 0.04375238939019728,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                26,
+                861,
+                65,
+                946
+              ]
+            },
+            "validation": {
+              "ssim": 0.9852672000626738,
+              "mean_delta": -0.010514548979699612,
+              "std_delta": 0.03981449455022812
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.03856182020778457,
+          "ssim": 0.9900069315696104,
+          "intensity_delta": 0.002988822292536497
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.02424876019358635,
+            "am_roi_perturbed": 0.026871299371123314,
+            "am_roi_repaired": 0.02439984306693077,
+            "delta_am_roi": 0.0026225391775369644,
+            "shift_distance": 3.7880813160807363,
+            "shift_y": -1.7627164060546079,
+            "shift_x": 3.35296748106299,
+            "distance_to_roi": 0.9475197205691508,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 0.9475197205691508,
+            "dist_to_roi_original_px": 24.127243328335492,
+            "dist_to_roi_perturbed_px": 23.17972360776634,
+            "entropy_original": 12.858498573303223,
+            "entropy_perturbed": 12.866255760192871,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 63022,
+          "area_change": 0.05664144279724014,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                25,
+                862,
+                64,
+                947
+              ]
+            },
+            "validation": {
+              "ssim": 0.9818392013557073,
+              "mean_delta": -0.008610935881733894,
+              "std_delta": 0.043517373502254486
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.04130320510982225,
+          "ssim": 0.987784267806528,
+          "intensity_delta": 0.00538661889731884
+        }
+      }
+    },
+    "JPCLN020": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9862586193538238,
+        "mask_pred_sum": 323493,
+        "mask_gt_sum": 321857,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.06587115867587273,
+          "insertion_auc": 0.26574348091089633,
+          "deletion_score_0": 0.3092341423034668,
+          "insertion_score_0": 0.0006318431114777923,
+          "robustness_corr_mean": 0.9956943213943124,
+          "robustness_corr_std": 0.00012912209302338976,
+          "robustness_corr_mask_n": 323493,
+          "boundary_deletion_auc": 0.31672632098197934,
+          "boundary_insertion_auc": 0.0064921266777673734,
+          "robustness_corr_mean_boundary": 0.99681424275111,
+          "robustness_corr_std_boundary": 0.00041419629738484454,
+          "robustness_corr_mask_n_boundary": 45523,
+          "robustness_corr_mean_full": 0.9995371953586089,
+          "robustness_corr_std_full": 1.4852273489558128e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.02617476135492325,
+            "am_roi_perturbed": 0.028939124196767807,
+            "am_roi_repaired": 0.02855384349822998,
+            "delta_am_roi": 0.0027643628418445587,
+            "shift_distance": 1.7760679472238328,
+            "shift_y": -1.4143590061876807,
+            "shift_x": -1.0742466917666889,
+            "distance_to_roi": -1.7707377573978746,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -1.7707377573978746,
+            "dist_to_roi_original_px": 41.83514500103189,
+            "dist_to_roi_perturbed_px": 43.605882758429765,
+            "entropy_original": 12.798343658447266,
+            "entropy_perturbed": 12.801956176757812,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 60719,
+          "area_change": 0.04613391943566012,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                7,
+                893,
+                87,
+                946
+              ]
+            },
+            "validation": {
+              "ssim": 0.9849298776148913,
+              "mean_delta": 0.015908578410744667,
+              "std_delta": 0.032723814249038696
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.03461989446077496,
+          "ssim": 0.9898210712377215,
+          "intensity_delta": 0.008894127793610096
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.026178620755672455,
+            "am_roi_perturbed": 0.03082345612347126,
+            "am_roi_repaired": 0.02883295528590679,
+            "delta_am_roi": 0.004644835367798805,
+            "shift_distance": 2.2329168306491485,
+            "shift_y": -1.6083521042756956,
+            "shift_x": -1.5489096427061781,
+            "distance_to_roi": -2.195366027016398,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -2.195366027016398,
+            "dist_to_roi_original_px": 41.520253722598326,
+            "dist_to_roi_perturbed_px": 43.715619749614724,
+            "entropy_original": 12.798343658447266,
+            "entropy_perturbed": 12.804227828979492,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 65171,
+          "area_change": 0.05966744257217312,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                6,
+                894,
+                86,
+                947
+              ]
+            },
+            "validation": {
+              "ssim": 0.9833997115138251,
+              "mean_delta": 0.016771985217928886,
+              "std_delta": 0.03472709655761719
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.048647102511798344,
+          "ssim": 0.9887561539873236,
+          "intensity_delta": 0.01026903185993433
+        }
+      }
+    },
+    "JPCLN025": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9755035550700286,
+        "mask_pred_sum": 258992,
+        "mask_gt_sum": 262798,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.04495543709053891,
+          "insertion_auc": 0.2167643191482057,
+          "deletion_score_0": 0.24761618673801422,
+          "insertion_score_0": 0.0006184361991472542,
+          "robustness_corr_mean": 0.9947845132173794,
+          "robustness_corr_std": 0.0005958221525054466,
+          "robustness_corr_mask_n": 258992,
+          "boundary_deletion_auc": 0.25460526831448077,
+          "boundary_insertion_auc": 0.004847636197519023,
+          "robustness_corr_mean_boundary": 0.9894737771617493,
+          "robustness_corr_std_boundary": 0.00032574735851671505,
+          "robustness_corr_mask_n_boundary": 41808,
+          "robustness_corr_mean_full": 0.9993941892871144,
+          "robustness_corr_std_full": 5.68983636182301e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.02948562242090702,
+            "am_roi_perturbed": 0.02808448113501072,
+            "am_roi_repaired": 0.02935134805738926,
+            "delta_am_roi": -0.0014011412858963013,
+            "shift_distance": 2.436491594639394,
+            "shift_y": -1.897545547357936,
+            "shift_x": -1.5283364114129085,
+            "distance_to_roi": -2.253097045079741,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -2.253097045079741,
+            "dist_to_roi_original_px": 49.64919595957594,
+            "dist_to_roi_perturbed_px": 51.90229300465568,
+            "entropy_original": 12.648147583007812,
+            "entropy_perturbed": 12.65253734588623,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 55657,
+          "area_change": 0.05268888614320134,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                56,
+                844,
+                62,
+                913
+              ]
+            },
+            "validation": {
+              "ssim": 0.9871107088770191,
+              "mean_delta": -0.005346472375094891,
+              "std_delta": 0.02982776053249836
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.0339013160749649,
+          "ssim": 0.992050824510634,
+          "intensity_delta": 0.0028215073980391026
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.029491448774933815,
+            "am_roi_perturbed": 0.0270262248814106,
+            "am_roi_repaired": 0.029313139617443085,
+            "delta_am_roi": -0.0024652238935232162,
+            "shift_distance": 3.926017106340708,
+            "shift_y": -2.9002835012283867,
+            "shift_x": -2.646122811167743,
+            "distance_to_roi": -3.7146811774985125,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -3.7146811774985125,
+            "dist_to_roi_original_px": 49.724331800529434,
+            "dist_to_roi_perturbed_px": 53.43901297802795,
+            "entropy_original": 12.648147583007812,
+            "entropy_perturbed": 12.650760650634766,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 59752,
+          "area_change": 0.06821832334589485,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                55,
+                845,
+                61,
+                914
+              ]
+            },
+            "validation": {
+              "ssim": 0.9837855431042232,
+              "mean_delta": -0.005275005009025335,
+              "std_delta": 0.03479449823498726
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.04323835899898162,
+          "ssim": 0.98995333873673,
+          "intensity_delta": 0.004223857074975967
+        }
+      }
+    },
+    "JPCLN026": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.987441976367489,
+        "mask_pred_sum": 344522,
+        "mask_gt_sum": 345714,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.07529978636011948,
+          "insertion_auc": 0.2808109000179683,
+          "deletion_score_0": 0.32914412021636963,
+          "insertion_score_0": 0.0008068786701187491,
+          "robustness_corr_mean": 0.9971114066457919,
+          "robustness_corr_std": 0.00017682707238647087,
+          "robustness_corr_mask_n": 344522,
+          "boundary_deletion_auc": 0.33875140771269796,
+          "boundary_insertion_auc": 0.007472522262833081,
+          "robustness_corr_mean_boundary": 0.9970622062479916,
+          "robustness_corr_std_boundary": 0.00041902242842038837,
+          "robustness_corr_mask_n_boundary": 46572,
+          "robustness_corr_mean_full": 0.9996792165351955,
+          "robustness_corr_std_full": 1.3168934817389459e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.023357845842838287,
+            "am_roi_perturbed": 0.02669098787009716,
+            "am_roi_repaired": 0.02632245048880577,
+            "delta_am_roi": 0.003333142027258873,
+            "shift_distance": 0.06976956071221384,
+            "shift_y": -0.006903680278981028,
+            "shift_x": 0.06942716183584707,
+            "distance_to_roi": 0.04476482499850931,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 0.04476482499850931,
+            "dist_to_roi_original_px": 43.60226651017634,
+            "dist_to_roi_perturbed_px": 43.55750168517783,
+            "entropy_original": 12.840346336364746,
+            "entropy_perturbed": 12.850985527038574,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 62110,
+          "area_change": 0.04432227840312085,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                99,
+                975,
+                12,
+                967
+              ]
+            },
+            "validation": {
+              "ssim": 0.9876911639865661,
+              "mean_delta": -0.0020044767297804356,
+              "std_delta": 0.02920551225543022
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.043120113046218954,
+          "ssim": 0.9906870370937848,
+          "intensity_delta": 0.007247254718095064
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.023368794471025467,
+            "am_roi_perturbed": 0.02650289051234722,
+            "am_roi_repaired": 0.025534896180033684,
+            "delta_am_roi": 0.0031340960413217545,
+            "shift_distance": 3.261857518574175,
+            "shift_y": -1.476821500767187,
+            "shift_x": -2.9083866191327843,
+            "distance_to_roi": -3.1267280708379133,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -3.1267280708379133,
+            "dist_to_roi_original_px": 43.367606766669915,
+            "dist_to_roi_perturbed_px": 46.49433483750783,
+            "entropy_original": 12.840346336364746,
+            "entropy_perturbed": 12.852931022644043,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 66644,
+          "area_change": 0.05728226354195088,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                98,
+                976,
+                11,
+                968
+              ]
+            },
+            "validation": {
+              "ssim": 0.9808576786492991,
+              "mean_delta": -0.014903419651091099,
+              "std_delta": 0.04584572836756706
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.05799653648864478,
+          "ssim": 0.9853107951315029,
+          "intensity_delta": 0.0030131922103464603
+        }
+      }
+    },
+    "JPCLN031": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.982743463421055,
+        "mask_pred_sum": 314751,
+        "mask_gt_sum": 314286,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.06534600526938449,
+          "insertion_auc": 0.258142161181604,
+          "deletion_score_0": 0.30086201429367065,
+          "insertion_score_0": 0.0005942247225902975,
+          "robustness_corr_mean": 0.9973198254664525,
+          "robustness_corr_std": 0.00015259589880705396,
+          "robustness_corr_mask_n": 314751,
+          "boundary_deletion_auc": 0.30775776132941246,
+          "boundary_insertion_auc": 0.0020539432400255462,
+          "robustness_corr_mean_boundary": 0.9980320174857171,
+          "robustness_corr_std_boundary": 0.00016701238325477372,
+          "robustness_corr_mask_n_boundary": 45873,
+          "robustness_corr_mean_full": 0.9997210053958102,
+          "robustness_corr_std_full": 8.206815855669358e-06,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.0269908644258976,
+            "am_roi_perturbed": 0.02332395315170288,
+            "am_roi_repaired": 0.028245627880096436,
+            "delta_am_roi": -0.0036669112741947174,
+            "shift_distance": 10.731574682049171,
+            "shift_y": -1.0540136506638191,
+            "shift_x": -10.679688683693598,
+            "distance_to_roi": -8.169371655950805,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -8.169371655950805,
+            "dist_to_roi_original_px": 36.75841786462495,
+            "dist_to_roi_perturbed_px": 44.92778952057576,
+            "entropy_original": 12.775471687316895,
+            "entropy_perturbed": 12.772056579589844,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 61220,
+          "area_change": 0.0479299509771216,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                56,
+                961,
+                85,
+                930
+              ]
+            },
+            "validation": {
+              "ssim": 0.985719437007036,
+              "mean_delta": 0.005629519931972027,
+              "std_delta": 0.03199129179120064
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.044698422270206116,
+          "ssim": 0.990104339643197,
+          "intensity_delta": 0.00839571375399828
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.026991218328475952,
+            "am_roi_perturbed": 0.02344876155257225,
+            "am_roi_repaired": 0.028157608583569527,
+            "delta_am_roi": -0.0035424567759037018,
+            "shift_distance": 12.493191233307932,
+            "shift_y": -1.549349505582427,
+            "shift_x": -12.396747287153744,
+            "distance_to_roi": -9.837889853876248,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -9.837889853876248,
+            "dist_to_roi_original_px": 36.66114990488708,
+            "dist_to_roi_perturbed_px": 46.49903975876333,
+            "entropy_original": 12.775471687316895,
+            "entropy_perturbed": 12.772772789001465,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 65639,
+          "area_change": 0.06173133683451363,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                55,
+                962,
+                84,
+                931
+              ]
+            },
+            "validation": {
+              "ssim": 0.9830899703758055,
+              "mean_delta": 0.012418132275342941,
+              "std_delta": 0.03666730225086212
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.052610471146181226,
+          "ssim": 0.9882837583773922,
+          "intensity_delta": 0.013461830094456673
+        }
+      }
+    },
+    "JPCLN034": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9823944570602648,
+        "mask_pred_sum": 308914,
+        "mask_gt_sum": 311118,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.06787031087878859,
+          "insertion_auc": 0.26668140881083674,
+          "deletion_score_0": 0.29569289088249207,
+          "insertion_score_0": 0.0005129249184392393,
+          "robustness_corr_mean": 0.997298924510825,
+          "robustness_corr_std": 0.0002733868119630489,
+          "robustness_corr_mask_n": 308914,
+          "boundary_deletion_auc": 0.3032647013664246,
+          "boundary_insertion_auc": 0.006173651425342541,
+          "robustness_corr_mean_boundary": 0.9975808964212591,
+          "robustness_corr_std_boundary": 0.00036550242781888267,
+          "robustness_corr_mask_n_boundary": 45350,
+          "robustness_corr_mean_full": 0.9996533087521495,
+          "robustness_corr_std_full": 1.923911276264878e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.025118863210082054,
+            "am_roi_perturbed": 0.03669639676809311,
+            "am_roi_repaired": 0.028195446357131004,
+            "delta_am_roi": 0.011577533558011055,
+            "shift_distance": 12.91690750880128,
+            "shift_y": 3.122651227512904,
+            "shift_x": -12.533776322491121,
+            "distance_to_roi": -2.3555547412383717,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -2.3555547412383717,
+            "dist_to_roi_original_px": 54.58667969016738,
+            "dist_to_roi_perturbed_px": 56.94223443140575,
+            "entropy_original": 12.76653003692627,
+            "entropy_perturbed": 12.769193649291992,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 60671,
+          "area_change": 0.04829175757654234,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                13,
+                1016,
+                99,
+                906
+              ]
+            },
+            "validation": {
+              "ssim": 0.9545645426776301,
+              "mean_delta": -0.034572276125403846,
+              "std_delta": 0.16012342430102997
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "alpha",
+              "poisson_ok": false,
+              "poisson_error": "OpenCV(4.10.0) /io/opencv/modules/core/src/matrix.cpp:808: error: (-215:Assertion failed) 0 <= roi.x && 0 <= roi.width && roi.x + roi.width <= m.cols && 0 <= roi.y && 0 <= roi.height && roi.y + roi.height <= m.rows in function 'Mat'\n"
+            }
+          },
+          "perceptual_distance": 0.1486586621031165,
+          "ssim": 0.9673753538407699,
+          "intensity_delta": -0.0021861584459453463
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.02512723207473755,
+            "am_roi_perturbed": 0.032958466559648514,
+            "am_roi_repaired": 0.028770988807082176,
+            "delta_am_roi": 0.007831234484910965,
+            "shift_distance": 18.989371669939047,
+            "shift_y": -1.749178503854182,
+            "shift_x": -18.908638527951666,
+            "distance_to_roi": -9.768571336341871,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -9.768571336341871,
+            "dist_to_roi_original_px": 54.95649120310272,
+            "dist_to_roi_perturbed_px": 64.7250625394446,
+            "entropy_original": 12.76653003692627,
+            "entropy_perturbed": 12.751932144165039,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 65172,
+          "area_change": 0.06249635820972827,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                12,
+                1017,
+                98,
+                907
+              ]
+            },
+            "validation": {
+              "ssim": 0.949708149731024,
+              "mean_delta": -0.031354266893739886,
+              "std_delta": 0.1752106769420751
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "alpha",
+              "poisson_ok": false,
+              "poisson_error": "OpenCV(4.10.0) /io/opencv/modules/core/src/matrix.cpp:808: error: (-215:Assertion failed) 0 <= roi.x && 0 <= roi.width && roi.x + roi.width <= m.cols && 0 <= roi.y && 0 <= roi.height && roi.y + roi.height <= m.rows in function 'Mat'\n"
+            }
+          },
+          "perceptual_distance": 0.15326206401611367,
+          "ssim": 0.9636695137065882,
+          "intensity_delta": -0.002095593065741311
+        }
+      }
+    },
+    "JPCLN067": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9852125767699745,
+        "mask_pred_sum": 247723,
+        "mask_gt_sum": 248239,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.043583182201837184,
+          "insertion_auc": 0.21733662791375533,
+          "deletion_score_0": 0.23732632398605347,
+          "insertion_score_0": 0.0005635052220895886,
+          "robustness_corr_mean": 0.9970908487238823,
+          "robustness_corr_std": 4.6013648611906e-05,
+          "robustness_corr_mask_n": 247723,
+          "boundary_deletion_auc": 0.24493107348680496,
+          "boundary_insertion_auc": 0.005840110313147307,
+          "robustness_corr_mean_boundary": 0.9961848659402682,
+          "robustness_corr_std_boundary": 0.00022057458895333436,
+          "robustness_corr_mask_n_boundary": 37707,
+          "robustness_corr_mean_full": 0.9995956194986823,
+          "robustness_corr_std_full": 1.8446443125400434e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.02537776157259941,
+            "am_roi_perturbed": 0.032001812011003494,
+            "am_roi_repaired": 0.031080853193998337,
+            "delta_am_roi": 0.006624050438404083,
+            "shift_distance": 12.47635667554356,
+            "shift_y": 2.3608214108113543,
+            "shift_x": -12.250959071094599,
+            "distance_to_roi": -11.36613191736538,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -11.36613191736538,
+            "dist_to_roi_original_px": 11.510239879979103,
+            "dist_to_roi_perturbed_px": 22.876371797344483,
+            "entropy_original": 12.65624713897705,
+            "entropy_perturbed": 12.659995079040527,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 50332,
+          "area_change": 0.049894438546279514,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                30,
+                709,
+                63,
+                957
+              ]
+            },
+            "validation": {
+              "ssim": 0.9732949260430677,
+              "mean_delta": 0.016290344297885895,
+              "std_delta": 0.03530002385377884
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.04568860253008703,
+          "ssim": 0.9858244263453769,
+          "intensity_delta": 0.01285881083458662
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.025381920859217644,
+            "am_roi_perturbed": 0.03390517830848694,
+            "am_roi_repaired": 0.029989952221512794,
+            "delta_am_roi": 0.008523257449269295,
+            "shift_distance": 13.31438541816736,
+            "shift_y": 2.683632925668803,
+            "shift_x": -13.04112623141782,
+            "distance_to_roi": -12.168561734717832,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -12.168561734717832,
+            "dist_to_roi_original_px": 11.930662483025793,
+            "dist_to_roi_perturbed_px": 24.099224217743625,
+            "entropy_original": 12.65624713897705,
+            "entropy_perturbed": 12.660272598266602,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 54081,
+          "area_change": 0.06474166710398307,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                29,
+                710,
+                62,
+                958
+              ]
+            },
+            "validation": {
+              "ssim": 0.9695762070522964,
+              "mean_delta": 0.016542870551347733,
+              "std_delta": 0.037939269095659256
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.05465311751080056,
+          "ssim": 0.983765177763881,
+          "intensity_delta": 0.013269842602312565
+        }
+      }
+    },
+    "JPCLN068": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9878798082246066,
+        "mask_pred_sum": 329177,
+        "mask_gt_sum": 330136,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.07830494126392296,
+          "insertion_auc": 0.2685224197382922,
+          "deletion_score_0": 0.31456059217453003,
+          "insertion_score_0": 0.00060580502031371,
+          "robustness_corr_mean": 0.9951416674779331,
+          "robustness_corr_std": 0.002658058062429251,
+          "robustness_corr_mask_n": 329177,
+          "boundary_deletion_auc": 0.3226492658257483,
+          "boundary_insertion_auc": 0.0025024159214808604,
+          "robustness_corr_mean_boundary": 0.9930407435949768,
+          "robustness_corr_std_boundary": 0.003517017190084658,
+          "robustness_corr_mask_n_boundary": 45944,
+          "robustness_corr_mean_full": 0.9995224998240569,
+          "robustness_corr_std_full": 0.0002321505740081303,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.025217140093445778,
+            "am_roi_perturbed": 0.0551917739212513,
+            "am_roi_repaired": 0.032619159668684006,
+            "delta_am_roi": 0.02997463382780552,
+            "shift_distance": 8.688710947300626,
+            "shift_y": -6.424031356548596,
+            "shift_x": -5.85025803326846,
+            "distance_to_roi": -8.216431334308155,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -8.216431334308155,
+            "dist_to_roi_original_px": 22.6685320381237,
+            "dist_to_roi_perturbed_px": 30.884963372431855,
+            "entropy_original": 12.82365894317627,
+            "entropy_perturbed": 12.855880737304688,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 61034,
+          "area_change": 0.04591147012093798,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                58,
+                930,
+                119,
+                993
+              ]
+            },
+            "validation": {
+              "ssim": 0.9694849342303706,
+              "mean_delta": -0.048344310373067856,
+              "std_delta": 0.06541702151298523
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.0584646996576339,
+          "ssim": 0.9791998535045833,
+          "intensity_delta": -0.025843318551778793
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.025217510759830475,
+            "am_roi_perturbed": 0.056667860597372055,
+            "am_roi_repaired": 0.034093886613845825,
+            "delta_am_roi": 0.03145034983754158,
+            "shift_distance": 8.692515590444534,
+            "shift_y": -6.461541039747033,
+            "shift_x": -5.814491781900301,
+            "distance_to_roi": -8.240491665742173,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -8.240491665742173,
+            "dist_to_roi_original_px": 22.882780903861622,
+            "dist_to_roi_perturbed_px": 31.123272569603795,
+            "entropy_original": 12.82365894317627,
+            "entropy_perturbed": 12.85815715789795,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 65407,
+          "area_change": 0.05909890423693028,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                57,
+                931,
+                118,
+                994
+              ]
+            },
+            "validation": {
+              "ssim": 0.9703048273283601,
+              "mean_delta": -0.047804683446884155,
+              "std_delta": 0.06343140453100204
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.06276521855033934,
+          "ssim": 0.9796566899834311,
+          "intensity_delta": -0.026019837707281113
+        }
+      }
+    },
+    "JPCLN087": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.984266426002395,
+        "mask_pred_sum": 338346,
+        "mask_gt_sum": 336453,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.07919002915441525,
+          "insertion_auc": 0.27937245923967563,
+          "deletion_score_0": 0.32333824038505554,
+          "insertion_score_0": 0.0006669223075732589,
+          "robustness_corr_mean": 0.9977088878117147,
+          "robustness_corr_std": 4.371523421929352e-05,
+          "robustness_corr_mask_n": 338346,
+          "boundary_deletion_auc": 0.3353258050978184,
+          "boundary_insertion_auc": 0.0049309179506963115,
+          "robustness_corr_mean_boundary": 0.9975285221467893,
+          "robustness_corr_std_boundary": 0.00011852439677712696,
+          "robustness_corr_mask_n_boundary": 44759,
+          "robustness_corr_mean_full": 0.9997443546768968,
+          "robustness_corr_std_full": 3.402275499476157e-06,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.02398253045976162,
+            "am_roi_perturbed": 0.02399330772459507,
+            "am_roi_repaired": 0.026961933821439743,
+            "delta_am_roi": 1.0777264833450317e-05,
+            "shift_distance": 4.9522476393032235,
+            "shift_y": 2.982973992198822,
+            "shift_x": 3.953052345068272,
+            "distance_to_roi": 3.939362088418129,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 3.939362088418129,
+            "dist_to_roi_original_px": 29.479466942064203,
+            "dist_to_roi_perturbed_px": 25.540104853646074,
+            "entropy_original": 12.816194534301758,
+            "entropy_perturbed": 12.812910079956055,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 59700,
+          "area_change": 0.04337276042867361,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                143,
+                1024,
+                80,
+                958
+              ]
+            },
+            "validation": {
+              "ssim": 0.9816629811805274,
+              "mean_delta": 0.006945709232240915,
+              "std_delta": 0.037106703966856
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.05663029453717172,
+          "ssim": 0.986688177884344,
+          "intensity_delta": 0.010559073649346828
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.023993458598852158,
+            "am_roi_perturbed": 0.023945122957229614,
+            "am_roi_repaired": 0.026707911863923073,
+            "delta_am_roi": -4.8335641622543335e-05,
+            "shift_distance": 6.4998278862338585,
+            "shift_y": 3.032465087423361,
+            "shift_x": 5.749079756293327,
+            "distance_to_roi": 4.345955516142514,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 4.345955516142514,
+            "dist_to_roi_original_px": 29.134694657721706,
+            "dist_to_roi_perturbed_px": 24.788739141579192,
+            "entropy_original": 12.816194534301758,
+            "entropy_perturbed": 12.810507774353027,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 64070,
+          "area_change": 0.056060955353395635,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                142,
+                1024,
+                79,
+                959
+              ]
+            },
+            "validation": {
+              "ssim": 0.9791461808974181,
+              "mean_delta": 0.0068540857173502445,
+              "std_delta": 0.039644431322813034
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.06289532058872283,
+          "ssim": 0.9849031518318556,
+          "intensity_delta": 0.01288706436753273
+        }
+      }
+    },
+    "JPCLN097": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9806146871401467,
+        "mask_pred_sum": 333300,
+        "mask_gt_sum": 330192,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.0638932270987425,
+          "insertion_auc": 0.2777682709682267,
+          "deletion_score_0": 0.3185350298881531,
+          "insertion_score_0": 0.0005322664510458708,
+          "robustness_corr_mean": 0.9972822901419979,
+          "robustness_corr_std": 0.00036402632862264536,
+          "robustness_corr_mask_n": 333300,
+          "boundary_deletion_auc": 0.33020424991846076,
+          "boundary_insertion_auc": 0.003393115577637218,
+          "robustness_corr_mean_boundary": 0.9936205134608023,
+          "robustness_corr_std_boundary": 0.0017678796716240112,
+          "robustness_corr_mask_n_boundary": 46902,
+          "robustness_corr_mean_full": 0.9996507568927302,
+          "robustness_corr_std_full": 5.0126131746877846e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.0219968743622303,
+            "am_roi_perturbed": 0.03647267818450928,
+            "am_roi_repaired": 0.02744358219206333,
+            "delta_am_roi": 0.014475803822278976,
+            "shift_distance": 10.494704343754437,
+            "shift_y": 8.269081178839201,
+            "shift_x": 6.462284094697907,
+            "distance_to_roi": -0.3011297252024363,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -0.3011297252024363,
+            "dist_to_roi_original_px": 36.11230658914649,
+            "dist_to_roi_perturbed_px": 36.41343631434893,
+            "entropy_original": 12.88437557220459,
+            "entropy_perturbed": 12.887988090515137,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 62381,
+          "area_change": 0.04592559255925593,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                29,
+                933,
+                0,
+                1024
+              ]
+            },
+            "validation": {
+              "ssim": 0.9669086821181911,
+              "mean_delta": -0.020506455534382625,
+              "std_delta": 0.14143234941213623
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "alpha",
+              "poisson_ok": false,
+              "poisson_error": "OpenCV(4.10.0) /io/opencv/modules/core/src/matrix.cpp:808: error: (-215:Assertion failed) 0 <= roi.x && 0 <= roi.width && roi.x + roi.width <= m.cols && 0 <= roi.y && 0 <= roi.height && roi.y + roi.height <= m.rows in function 'Mat'\n"
+            }
+          },
+          "perceptual_distance": 0.24612154827142754,
+          "ssim": 0.9720434012552894,
+          "intensity_delta": -0.0013238734860194395
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.022001877427101135,
+            "am_roi_perturbed": 0.03897905349731445,
+            "am_roi_repaired": 0.028232591226696968,
+            "delta_am_roi": 0.016977176070213318,
+            "shift_distance": 5.649763038677219,
+            "shift_y": 5.537636788190696,
+            "shift_x": 1.12000053360714,
+            "distance_to_roi": 2.7630798239526584,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 2.7630798239526584,
+            "dist_to_roi_original_px": 35.66885152724032,
+            "dist_to_roi_perturbed_px": 32.90577170328766,
+            "entropy_original": 12.88437557220459,
+            "entropy_perturbed": 12.893731117248535,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 66941,
+          "area_change": 0.05942994299429943,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                28,
+                934,
+                0,
+                1024
+              ]
+            },
+            "validation": {
+              "ssim": 0.9578653844533225,
+              "mean_delta": -0.028804892046791403,
+              "std_delta": 0.1516378508084457
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "alpha",
+              "poisson_ok": false,
+              "poisson_error": "OpenCV(4.10.0) /io/opencv/modules/core/src/matrix.cpp:808: error: (-215:Assertion failed) 0 <= roi.x && 0 <= roi.width && roi.x + roi.width <= m.cols && 0 <= roi.y && 0 <= roi.height && roi.y + roi.height <= m.rows in function 'Mat'\n"
+            }
+          },
+          "perceptual_distance": 0.2656122646294534,
+          "ssim": 0.9642835399095104,
+          "intensity_delta": -0.0019999027763356768
+        }
+      }
+    },
+    "JPCLN105": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.984154386617788,
+        "mask_pred_sum": 287961,
+        "mask_gt_sum": 292452,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.061466325947549194,
+          "insertion_auc": 0.24494769556331447,
+          "deletion_score_0": 0.2754702866077423,
+          "insertion_score_0": 0.0005056902300566435,
+          "robustness_corr_mean": 0.9974174343945611,
+          "robustness_corr_std": 8.524314912418851e-05,
+          "robustness_corr_mask_n": 287961,
+          "boundary_deletion_auc": 0.2838450141251087,
+          "boundary_insertion_auc": 0.006652646939619443,
+          "robustness_corr_mean_boundary": 0.9974056795027803,
+          "robustness_corr_std_boundary": 0.00046382240454243554,
+          "robustness_corr_mask_n_boundary": 42290,
+          "robustness_corr_mean_full": 0.9997289981755015,
+          "robustness_corr_std_full": 9.538759936457382e-06,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.02733006328344345,
+            "am_roi_perturbed": 0.03830662742257118,
+            "am_roi_repaired": 0.025620268657803535,
+            "delta_am_roi": 0.010976564139127731,
+            "shift_distance": 8.32954160201582,
+            "shift_y": -1.4650753773406677,
+            "shift_x": 8.19968398405831,
+            "distance_to_roi": 3.5828986431322285,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 3.5828986431322285,
+            "dist_to_roi_original_px": 28.833034260242062,
+            "dist_to_roi_perturbed_px": 25.250135617109834,
+            "entropy_original": 12.748104095458984,
+            "entropy_perturbed": 12.760029792785645,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 56435,
+          "area_change": 0.04819402627439132,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                82,
+                905,
+                50,
+                928
+              ]
+            },
+            "validation": {
+              "ssim": 0.9860412961472637,
+              "mean_delta": -0.005581920500844717,
+              "std_delta": 0.04800993204116821
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.03587341025316467,
+          "ssim": 0.9908610372142649,
+          "intensity_delta": -0.0011668256483972073
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.027334196493029594,
+            "am_roi_perturbed": 0.037138037383556366,
+            "am_roi_repaired": 0.025348924100399017,
+            "delta_am_roi": 0.009803840890526772,
+            "shift_distance": 8.569176159635553,
+            "shift_y": -1.8859059720977598,
+            "shift_x": 8.359075231104953,
+            "distance_to_roi": 3.340485396589937,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 3.340485396589937,
+            "dist_to_roi_original_px": 28.644545426531455,
+            "dist_to_roi_perturbed_px": 25.304060029941517,
+            "entropy_original": 12.748104095458984,
+            "entropy_perturbed": 12.757974624633789,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 60592,
+          "area_change": 0.062379975066067975,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                81,
+                906,
+                49,
+                929
+              ]
+            },
+            "validation": {
+              "ssim": 0.9840152438290714,
+              "mean_delta": -0.005997879430651665,
+              "std_delta": 0.05038611218333244
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.04153539469310393,
+          "ssim": 0.9895192828310793,
+          "intensity_delta": -0.0017938920063897967
+        }
+      }
+    },
+    "JPCLN113": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9824568343189276,
+        "mask_pred_sum": 350638,
+        "mask_gt_sum": 357216,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.06937476417369907,
+          "insertion_auc": 0.2750579884086619,
+          "deletion_score_0": 0.33500921726226807,
+          "insertion_score_0": 0.0005406729760579765,
+          "robustness_corr_mean": 0.9966070402172411,
+          "robustness_corr_std": 0.0002520830741904553,
+          "robustness_corr_mask_n": 350638,
+          "boundary_deletion_auc": 0.34210195019841205,
+          "boundary_insertion_auc": 0.0026101457144250165,
+          "robustness_corr_mean_boundary": 0.9951672092373459,
+          "robustness_corr_std_boundary": 0.001119472219481808,
+          "robustness_corr_mask_n_boundary": 46928,
+          "robustness_corr_mean_full": 0.9996456241618055,
+          "robustness_corr_std_full": 2.193852767993473e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.0235742200165987,
+            "am_roi_perturbed": 0.024987824261188507,
+            "am_roi_repaired": 0.029889777302742004,
+            "delta_am_roi": 0.0014136042445898056,
+            "shift_distance": 1.0427605932163087,
+            "shift_y": 0.8607778969244464,
+            "shift_x": -0.5885669604481336,
+            "distance_to_roi": 0.11403646779730181,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 0.11403646779730181,
+            "dist_to_roi_original_px": 31.93006324492014,
+            "dist_to_roi_perturbed_px": 31.81602677712284,
+            "entropy_original": 12.886388778686523,
+            "entropy_perturbed": 12.891521453857422,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 62536,
+          "area_change": 0.04374311968468905,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                16,
+                881,
+                69,
+                983
+              ]
+            },
+            "validation": {
+              "ssim": 0.9780276488577359,
+              "mean_delta": 0.016337882727384567,
+              "std_delta": 0.04288426414132118
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.07184955415626366,
+          "ssim": 0.9845590170782307,
+          "intensity_delta": 0.018429335206747055
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.02359291911125183,
+            "am_roi_perturbed": 0.025223687291145325,
+            "am_roi_repaired": 0.03062586858868599,
+            "delta_am_roi": 0.0016307681798934937,
+            "shift_distance": 2.141548460730753,
+            "shift_y": 0.9699210059373513,
+            "shift_x": 1.9093148121511376,
+            "distance_to_roi": 2.0685863823825983,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 2.0685863823825983,
+            "dist_to_roi_original_px": 31.943210814275535,
+            "dist_to_roi_perturbed_px": 29.874624431892936,
+            "entropy_original": 12.886388778686523,
+            "entropy_perturbed": 12.8943510055542,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 67162,
+          "area_change": 0.056739429268932634,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                15,
+                882,
+                68,
+                984
+              ]
+            },
+            "validation": {
+              "ssim": 0.9758941410605417,
+              "mean_delta": 0.020887570455670357,
+              "std_delta": 0.043686237186193466
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.09559662841881315,
+          "ssim": 0.9829858840085728,
+          "intensity_delta": 0.023293182253837585
+        }
+      }
+    },
+    "JPCLN118": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9806514175023688,
+        "mask_pred_sum": 427046,
+        "mask_gt_sum": 426815,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.10569752747251186,
+          "insertion_auc": 0.32526471819437575,
+          "deletion_score_0": 0.40755778551101685,
+          "insertion_score_0": 0.0008590369252488017,
+          "robustness_corr_mean": 0.9957964523059027,
+          "robustness_corr_std": 0.00024700957195218984,
+          "robustness_corr_mask_n": 427046,
+          "boundary_deletion_auc": 0.41629551649093627,
+          "boundary_insertion_auc": 0.006184558235690928,
+          "robustness_corr_mean_boundary": 0.9944321767169454,
+          "robustness_corr_std_boundary": 0.0004678545377494371,
+          "robustness_corr_mask_n_boundary": 52748,
+          "robustness_corr_mean_full": 0.9995487899201615,
+          "robustness_corr_std_full": 2.4812179118800788e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.02096891775727272,
+            "am_roi_perturbed": 0.021267713978886604,
+            "am_roi_repaired": 0.0250770915299654,
+            "delta_am_roi": 0.00029879622161388397,
+            "shift_distance": 6.618257509370641,
+            "shift_y": -1.0224896074395247,
+            "shift_x": -6.538795566694148,
+            "distance_to_roi": -5.28526512945453,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -5.28526512945453,
+            "dist_to_roi_original_px": 39.58244008432306,
+            "dist_to_roi_perturbed_px": 44.86770521377759,
+            "entropy_original": 13.02281665802002,
+            "entropy_perturbed": 13.009695053100586,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 70315,
+          "area_change": 0.04051319998313999,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                29,
+                1024,
+                41,
+                989
+              ]
+            },
+            "validation": {
+              "ssim": 0.9675040683151561,
+              "mean_delta": 0.011136719956994057,
+              "std_delta": 0.05609501153230667
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.1020855769359817,
+          "ssim": 0.9718065184011037,
+          "intensity_delta": 0.01844186522066593
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.020971965044736862,
+            "am_roi_perturbed": 0.020206445828080177,
+            "am_roi_repaired": 0.024988830089569092,
+            "delta_am_roi": -0.0007655192166566849,
+            "shift_distance": 4.160559017764906,
+            "shift_y": -1.9014805654439328,
+            "shift_x": -3.7006246769354902,
+            "distance_to_roi": -3.9071148473822603,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -3.9071148473822603,
+            "dist_to_roi_original_px": 39.35031939959873,
+            "dist_to_roi_perturbed_px": 43.25743424698099,
+            "entropy_original": 13.02281665802002,
+            "entropy_perturbed": 13.005351066589355,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 75397,
+          "area_change": 0.05227305723505196,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                28,
+                1024,
+                40,
+                990
+              ]
+            },
+            "validation": {
+              "ssim": 0.9634746246789352,
+              "mean_delta": 0.015427358448505402,
+              "std_delta": 0.062735915184021
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.10813631831357877,
+          "ssim": 0.9682383046291912,
+          "intensity_delta": 0.0260718185454607
+        }
+      }
+    },
+    "JPCLN121": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9733645695146008,
+        "mask_pred_sum": 314380,
+        "mask_gt_sum": 323342,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.06459738409321289,
+          "insertion_auc": 0.2560194789170055,
+          "deletion_score_0": 0.30081993341445923,
+          "insertion_score_0": 0.0006163184298202395,
+          "robustness_corr_mean": 0.9962449837178228,
+          "robustness_corr_std": 0.000176591252023749,
+          "robustness_corr_mask_n": 314380,
+          "boundary_deletion_auc": 0.31499778777360915,
+          "boundary_insertion_auc": 0.008312148539698683,
+          "robustness_corr_mean_boundary": 0.9951041993743853,
+          "robustness_corr_std_boundary": 0.0007339451396030614,
+          "robustness_corr_mask_n_boundary": 48414,
+          "robustness_corr_mean_full": 0.9996099422137821,
+          "robustness_corr_std_full": 2.4139618663014343e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.026696093380451202,
+            "am_roi_perturbed": 0.021784165874123573,
+            "am_roi_repaired": 0.026805387809872627,
+            "delta_am_roi": -0.004911927506327629,
+            "shift_distance": 5.685705182845795,
+            "shift_y": -2.903301933803334,
+            "shift_x": 4.888566385701779,
+            "distance_to_roi": 0.7547662328310594,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 0.7547662328310594,
+            "dist_to_roi_original_px": 47.48998565203188,
+            "dist_to_roi_perturbed_px": 46.735219419200824,
+            "entropy_original": 12.79106616973877,
+            "entropy_perturbed": 12.780464172363281,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 64637,
+          "area_change": 0.05080475857242827,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                65,
+                981,
+                47,
+                942
+              ]
+            },
+            "validation": {
+              "ssim": 0.9829514267437608,
+              "mean_delta": 0.008378496393561363,
+              "std_delta": 0.043635766953229904
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.03931290109176189,
+          "ssim": 0.9873349203586479,
+          "intensity_delta": 0.009236650541424751
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.026699533686041832,
+            "am_roi_perturbed": 0.022343574091792107,
+            "am_roi_repaired": 0.026463769376277924,
+            "delta_am_roi": -0.004355959594249725,
+            "shift_distance": 6.581728255705793,
+            "shift_y": -3.098804009062121,
+            "shift_x": 5.806596296056455,
+            "distance_to_roi": 1.1121703772562768,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 1.1121703772562768,
+            "dist_to_roi_original_px": 47.2211612628503,
+            "dist_to_roi_perturbed_px": 46.108990885594025,
+            "entropy_original": 12.79106616973877,
+            "entropy_perturbed": 12.782548904418945,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 69355,
+          "area_change": 0.06574527641707488,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                64,
+                982,
+                46,
+                943
+              ]
+            },
+            "validation": {
+              "ssim": 0.9804388840828886,
+              "mean_delta": 0.009893176145851612,
+              "std_delta": 0.045441750437021255
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.03897930770957222,
+          "ssim": 0.9854440425343699,
+          "intensity_delta": 0.011902688071131706
+        }
+      }
+    },
+    "JPCLN133": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9735933080579983,
+        "mask_pred_sum": 330558,
+        "mask_gt_sum": 334122,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.06603304250893417,
+          "insertion_auc": 0.2679947333192103,
+          "deletion_score_0": 0.3164385259151459,
+          "insertion_score_0": 0.0005850522429682314,
+          "robustness_corr_mean": 0.9954697444668654,
+          "robustness_corr_std": 0.0001968917310230287,
+          "robustness_corr_mask_n": 330558,
+          "boundary_deletion_auc": 0.3301088161766529,
+          "boundary_insertion_auc": 0.0011059726602979934,
+          "robustness_corr_mean_boundary": 0.989435701364274,
+          "robustness_corr_std_boundary": 0.00046354210891961595,
+          "robustness_corr_mask_n_boundary": 48875,
+          "robustness_corr_mean_full": 0.9994898187154343,
+          "robustness_corr_std_full": 1.4118354453661891e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.028449175879359245,
+            "am_roi_perturbed": 0.054548826068639755,
+            "am_roi_repaired": 0.03875509276986122,
+            "delta_am_roi": 0.02609965018928051,
+            "shift_distance": 5.379807035849667,
+            "shift_y": 1.8283194042787159,
+            "shift_x": -5.059601950639546,
+            "distance_to_roi": -1.3373444301841886,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -1.3373444301841886,
+            "dist_to_roi_original_px": 28.265914691721687,
+            "dist_to_roi_perturbed_px": 29.603259121905875,
+            "entropy_original": 12.817361831665039,
+            "entropy_perturbed": 12.833972930908203,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 65209,
+          "area_change": 0.048826529686167026,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                66,
+                969,
+                93,
+                955
+              ]
+            },
+            "validation": {
+              "ssim": 0.9723331370459376,
+              "mean_delta": -0.05464234575629234,
+              "std_delta": 0.04819987341761589
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.046383945581813656,
+          "ssim": 0.9804079304848975,
+          "intensity_delta": -0.02991459146142006
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.028518784791231155,
+            "am_roi_perturbed": 0.05350560322403908,
+            "am_roi_repaired": 0.04041414335370064,
+            "delta_am_roi": 0.024986818432807922,
+            "shift_distance": 7.799304719881531,
+            "shift_y": 0.17305531346403313,
+            "shift_x": -7.797384559712839,
+            "distance_to_roi": -4.415510781189976,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -4.415510781189976,
+            "dist_to_roi_original_px": 28.090868787727306,
+            "dist_to_roi_perturbed_px": 32.50637956891728,
+            "entropy_original": 12.817361831665039,
+            "entropy_perturbed": 12.838372230529785,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 69980,
+          "area_change": 0.06310239050333073,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                65,
+                970,
+                92,
+                956
+              ]
+            },
+            "validation": {
+              "ssim": 0.971076799265529,
+              "mean_delta": -0.05284462496638298,
+              "std_delta": 0.050241485238075256
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.047857714196046196,
+          "ssim": 0.9794123558594872,
+          "intensity_delta": -0.027345450595021248
+        }
+      }
+    },
+    "JPCNN002": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9868065220746256,
+        "mask_pred_sum": 358395,
+        "mask_gt_sum": 360824,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.08105060896486975,
+          "insertion_auc": 0.28811274615291044,
+          "deletion_score_0": 0.3426415026187897,
+          "insertion_score_0": 0.0006160651100799441,
+          "robustness_corr_mean": 0.9961016669256869,
+          "robustness_corr_std": 0.0003516172657057842,
+          "robustness_corr_mask_n": 358395,
+          "boundary_deletion_auc": 0.35730229094624527,
+          "boundary_insertion_auc": 0.011095950144226662,
+          "robustness_corr_mean_boundary": 0.995002023130661,
+          "robustness_corr_std_boundary": 0.0007988360990563888,
+          "robustness_corr_mask_n_boundary": 47896,
+          "robustness_corr_mean_full": 0.9996209490952316,
+          "robustness_corr_std_full": 3.257305373180578e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.024560652673244476,
+            "am_roi_perturbed": 0.022348225116729736,
+            "am_roi_repaired": 0.024750975891947746,
+            "delta_am_roi": -0.00221242755651474,
+            "shift_distance": 1.8620511505154838,
+            "shift_y": -0.5596744822050255,
+            "shift_x": 1.7759501572692216,
+            "distance_to_roi": 0.5487825039292744,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 0.5487825039292744,
+            "dist_to_roi_original_px": 41.0677530591859,
+            "dist_to_roi_perturbed_px": 40.51897055525662,
+            "entropy_original": 12.88554859161377,
+            "entropy_perturbed": 12.883657455444336,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 63854,
+          "area_change": 0.04378688318754447,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                30,
+                946,
+                38,
+                975
+              ]
+            },
+            "validation": {
+              "ssim": 0.9910135454828412,
+              "mean_delta": 0.0027011381462216377,
+              "std_delta": 0.03236282244324684
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.020011101383715868,
+          "ssim": 0.9929808834138308,
+          "intensity_delta": -0.001222262973897159
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.024591412395238876,
+            "am_roi_perturbed": 0.0327201671898365,
+            "am_roi_repaired": 0.022443415597081184,
+            "delta_am_roi": 0.008128754794597626,
+            "shift_distance": 5.731889035277059,
+            "shift_y": -0.9185131374253501,
+            "shift_x": 5.657816321612643,
+            "distance_to_roi": 2.278294295646525,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 2.278294295646525,
+            "dist_to_roi_original_px": 41.006269312549406,
+            "dist_to_roi_perturbed_px": 38.72797501690288,
+            "entropy_original": 12.88554859161377,
+            "entropy_perturbed": 12.889534950256348,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 68567,
+          "area_change": 0.05674186302822305,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                29,
+                947,
+                37,
+                976
+              ]
+            },
+            "validation": {
+              "ssim": 0.9843317826726485,
+              "mean_delta": -0.013197625055909157,
+              "std_delta": 0.04878419637680054
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.037437885301187634,
+          "ssim": 0.9878609073026695,
+          "intensity_delta": -0.010898842476308346
+        }
+      }
+    },
+    "JPCNN003": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.977429226435534,
+        "mask_pred_sum": 242253,
+        "mask_gt_sum": 234514,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.041724198985320975,
+          "insertion_auc": 0.2090207462475519,
+          "deletion_score_0": 0.23190933465957642,
+          "insertion_score_0": 0.0004747297498397529,
+          "robustness_corr_mean": 0.9951475718194104,
+          "robustness_corr_std": 0.001473213285964322,
+          "robustness_corr_mask_n": 242253,
+          "boundary_deletion_auc": 0.2371923118829727,
+          "boundary_insertion_auc": 0.003893747650727164,
+          "robustness_corr_mean_boundary": 0.9874512339417812,
+          "robustness_corr_std_boundary": 0.006242539347393392,
+          "robustness_corr_mask_n_boundary": 40040,
+          "robustness_corr_mean_full": 0.9993931546824294,
+          "robustness_corr_std_full": 0.00012380111447090106,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.028441453352570534,
+            "am_roi_perturbed": 0.03569639474153519,
+            "am_roi_repaired": 0.03675500303506851,
+            "delta_am_roi": 0.007254941388964653,
+            "shift_distance": 2.392788740504614,
+            "shift_y": 2.3927764255797115,
+            "shift_x": -0.007676840211729541,
+            "distance_to_roi": 0.6444072876970495,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 0.6444072876970495,
+            "dist_to_roi_original_px": 24.508298854621895,
+            "dist_to_roi_perturbed_px": 23.863891566924845,
+            "entropy_original": 12.65772533416748,
+            "entropy_perturbed": 12.680208206176758,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 53416,
+          "area_change": 0.05411697687954329,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                18,
+                807,
+                98,
+                855
+              ]
+            },
+            "validation": {
+              "ssim": 0.9802146181715302,
+              "mean_delta": 0.014752648770809174,
+              "std_delta": 0.035494834184646606
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.030237176571972668,
+          "ssim": 0.9895806828581981,
+          "intensity_delta": 0.013700922951102257
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.028473658487200737,
+            "am_roi_perturbed": 0.031111394986510277,
+            "am_roi_repaired": 0.03746172785758972,
+            "delta_am_roi": 0.00263773649930954,
+            "shift_distance": 5.196106343364513,
+            "shift_y": 2.6075331436132387,
+            "shift_x": 4.494473499366904,
+            "distance_to_roi": 5.060455817385698,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 5.060455817385698,
+            "dist_to_roi_original_px": 24.648967920632607,
+            "dist_to_roi_perturbed_px": 19.58851210324691,
+            "entropy_original": 12.65772533416748,
+            "entropy_perturbed": 12.674105644226074,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 57379,
+          "area_change": 0.07020759288842657,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                17,
+                808,
+                97,
+                856
+              ]
+            },
+            "validation": {
+              "ssim": 0.9734834817887761,
+              "mean_delta": 0.01853599026799202,
+              "std_delta": 0.04044869542121887
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.036736678099259734,
+          "ssim": 0.9860004993507785,
+          "intensity_delta": 0.017654012888669968
+        }
+      }
+    },
+    "JPCNN020": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9844937488220754,
+        "mask_pred_sum": 428346,
+        "mask_gt_sum": 436531,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.0971122932562139,
+          "insertion_auc": 0.3226563945383532,
+          "deletion_score_0": 0.40895286202430725,
+          "insertion_score_0": 0.0008703431813046336,
+          "robustness_corr_mean": 0.9930188708873852,
+          "robustness_corr_std": 0.0005130570984165862,
+          "robustness_corr_mask_n": 428346,
+          "boundary_deletion_auc": 0.4118513368070126,
+          "boundary_insertion_auc": 0.0017264721216633915,
+          "robustness_corr_mean_boundary": 0.9947956254739498,
+          "robustness_corr_std_boundary": 0.0009646512857395557,
+          "robustness_corr_mask_n_boundary": 51645,
+          "robustness_corr_mean_full": 0.9992267579805195,
+          "robustness_corr_std_full": 5.863189651015074e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.021763918921351433,
+            "am_roi_perturbed": 0.020537354052066803,
+            "am_roi_repaired": 0.025115927681326866,
+            "delta_am_roi": -0.0012265648692846298,
+            "shift_distance": 4.073985173424068,
+            "shift_y": 3.227632231637017,
+            "shift_x": -2.485909364915983,
+            "distance_to_roi": 2.0618635458716525,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 2.0618635458716525,
+            "dist_to_roi_original_px": 56.63087148480736,
+            "dist_to_roi_perturbed_px": 54.569007938935705,
+            "entropy_original": 13.012604713439941,
+            "entropy_perturbed": 12.994812965393066,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 68905,
+          "area_change": 0.03967820406867346,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                19,
+                1024,
+                77,
+                974
+              ]
+            },
+            "validation": {
+              "ssim": 0.9717063860069602,
+              "mean_delta": 0.01720089092850685,
+              "std_delta": 0.04811971262097359
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.08127640746533871,
+          "ssim": 0.9767141314699153,
+          "intensity_delta": 0.01983541063964367
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.02178146131336689,
+            "am_roi_perturbed": 0.021106278523802757,
+            "am_roi_repaired": 0.025068219751119614,
+            "delta_am_roi": -0.0006751827895641327,
+            "shift_distance": 3.6556095715881116,
+            "shift_y": 3.6194422723464754,
+            "shift_x": -0.5129512423593496,
+            "distance_to_roi": 3.190674313079377,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 3.190674313079377,
+            "dist_to_roi_original_px": 56.39138068111396,
+            "dist_to_roi_perturbed_px": 53.20070636803458,
+            "entropy_original": 13.012604713439941,
+            "entropy_perturbed": 12.996786117553711,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 73832,
+          "area_change": 0.05101483380258016,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                18,
+                1024,
+                76,
+                975
+              ]
+            },
+            "validation": {
+              "ssim": 0.9709016875095198,
+              "mean_delta": 0.01987113058567047,
+              "std_delta": 0.04926420375704765
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.08862531487829983,
+          "ssim": 0.975950878286808,
+          "intensity_delta": 0.023156292736530304
+        }
+      }
+    },
+    "JPCNN025": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9851301977913047,
+        "mask_pred_sum": 385167,
+        "mask_gt_sum": 390499,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.09390401018754346,
+          "insertion_auc": 0.3011687662030454,
+          "deletion_score_0": 0.36812537908554077,
+          "insertion_score_0": 0.0006062846514396369,
+          "robustness_corr_mean": 0.9959423597276386,
+          "robustness_corr_std": 5.238659804851574e-05,
+          "robustness_corr_mask_n": 385167,
+          "boundary_deletion_auc": 0.38217201903462406,
+          "boundary_insertion_auc": 0.0021756936053861863,
+          "robustness_corr_mean_boundary": 0.9951717590194202,
+          "robustness_corr_std_boundary": 0.0006025993986132789,
+          "robustness_corr_mask_n_boundary": 48633,
+          "robustness_corr_mean_full": 0.9995886919817192,
+          "robustness_corr_std_full": 9.72451909198265e-06,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.023597456514835358,
+            "am_roi_perturbed": 0.024798179045319557,
+            "am_roi_repaired": 0.02423548884689808,
+            "delta_am_roi": 0.0012007225304841995,
+            "shift_distance": 3.200223084496699,
+            "shift_y": 1.8322349608282025,
+            "shift_x": 2.623803125019947,
+            "distance_to_roi": 3.1925029223655628,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 3.1925029223655628,
+            "dist_to_roi_original_px": 32.37908036352056,
+            "dist_to_roi_perturbed_px": 29.186577441154995,
+            "entropy_original": 12.946667671203613,
+            "entropy_perturbed": 12.94713020324707,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 64886,
+          "area_change": 0.041496286026580675,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                10,
+                966,
+                68,
+                971
+              ]
+            },
+            "validation": {
+              "ssim": 0.9786259112821414,
+              "mean_delta": 0.02346927672624588,
+              "std_delta": 0.04496069625020027
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.048525315787022315,
+          "ssim": 0.9835421480686322,
+          "intensity_delta": 0.020462945103645325
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.023647388443350792,
+            "am_roi_perturbed": 0.025312062352895737,
+            "am_roi_repaired": 0.02442222647368908,
+            "delta_am_roi": 0.0016646739095449448,
+            "shift_distance": 5.1922792604768,
+            "shift_y": 2.4908573156591274,
+            "shift_x": 4.55580879227881,
+            "distance_to_roi": 5.18879567241396,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 5.18879567241396,
+            "dist_to_roi_original_px": 32.21053411135089,
+            "dist_to_roi_perturbed_px": 27.02173843893693,
+            "entropy_original": 12.946667671203613,
+            "entropy_perturbed": 12.946316719055176,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 69542,
+          "area_change": 0.05340280969034211,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                9,
+                967,
+                67,
+                972
+              ]
+            },
+            "validation": {
+              "ssim": 0.9761140743701229,
+              "mean_delta": 0.024484286084771156,
+              "std_delta": 0.047646261751651764
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.05484608521995445,
+          "ssim": 0.9815404983167332,
+          "intensity_delta": 0.023787956684827805
+        }
+      }
+    },
+    "JPCNN028": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9834569757751809,
+        "mask_pred_sum": 345893,
+        "mask_gt_sum": 341708,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.07633998665842227,
+          "insertion_auc": 0.2799297647259664,
+          "deletion_score_0": 0.3305046558380127,
+          "insertion_score_0": 0.0006780426483601332,
+          "robustness_corr_mean": 0.9965688381270228,
+          "robustness_corr_std": 0.00018802183810274066,
+          "robustness_corr_mask_n": 345893,
+          "boundary_deletion_auc": 0.34088444337248797,
+          "boundary_insertion_auc": 0.0009387348953168839,
+          "robustness_corr_mean_boundary": 0.9955089704988662,
+          "robustness_corr_std_boundary": 0.00034999409062534605,
+          "robustness_corr_mask_n_boundary": 46039,
+          "robustness_corr_mean_full": 0.9996314146314246,
+          "robustness_corr_std_full": 1.554836469696967e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.0239170640707016,
+            "am_roi_perturbed": 0.02619554102420807,
+            "am_roi_repaired": 0.028619233518838882,
+            "delta_am_roi": 0.0022784769535064697,
+            "shift_distance": 5.608144032934427,
+            "shift_y": -0.7973433567461257,
+            "shift_x": 5.5511731251683045,
+            "distance_to_roi": 2.246392513122043,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 2.246392513122043,
+            "dist_to_roi_original_px": 32.05001883530379,
+            "dist_to_roi_perturbed_px": 29.803626322181746,
+            "entropy_original": 12.844549179077148,
+            "entropy_perturbed": 12.84550952911377,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 61434,
+          "area_change": 0.04373028653369684,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                59,
+                960,
+                108,
+                925
+              ]
+            },
+            "validation": {
+              "ssim": 0.9772768423928121,
+              "mean_delta": 0.027867622673511505,
+              "std_delta": 0.048265229910612106
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.04888501406336824,
+          "ssim": 0.9849253184894554,
+          "intensity_delta": 0.023032108321785927
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.023923519998788834,
+            "am_roi_perturbed": 0.028131484985351562,
+            "am_roi_repaired": 0.027877671644091606,
+            "delta_am_roi": 0.004207964986562729,
+            "shift_distance": 5.748026675697905,
+            "shift_y": -1.8010789245841465,
+            "shift_x": 5.4585644057713125,
+            "distance_to_roi": 1.338805644231055,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 1.338805644231055,
+            "dist_to_roi_original_px": 31.540862144440243,
+            "dist_to_roi_perturbed_px": 30.20205650020919,
+            "entropy_original": 12.844549179077148,
+            "entropy_perturbed": 12.850049018859863,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 65880,
+          "area_change": 0.05638737991228501,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                58,
+                961,
+                107,
+                926
+              ]
+            },
+            "validation": {
+              "ssim": 0.9781931815684177,
+              "mean_delta": 0.024364860728383064,
+              "std_delta": 0.04309739172458649
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.04521103071359297,
+          "ssim": 0.9854556015736757,
+          "intensity_delta": 0.020779835060238838
+        }
+      }
+    },
+    "JPCNN029": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9801390268122905,
+        "mask_pred_sum": 210221,
+        "mask_gt_sum": 210705,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.03976747067063116,
+          "insertion_auc": 0.19155635323259051,
+          "deletion_score_0": 0.20111677050590515,
+          "insertion_score_0": 0.000484709395095706,
+          "robustness_corr_mean": 0.9950580803664488,
+          "robustness_corr_std": 0.00029849364914638355,
+          "robustness_corr_mask_n": 210221,
+          "boundary_deletion_auc": 0.20341661050915716,
+          "boundary_insertion_auc": 0.004349356386228464,
+          "robustness_corr_mean_boundary": 0.9882182513834769,
+          "robustness_corr_std_boundary": 0.0008530858967255059,
+          "robustness_corr_mask_n_boundary": 35161,
+          "robustness_corr_mean_full": 0.9993436924284836,
+          "robustness_corr_std_full": 2.7554339419809225e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.028250638395547867,
+            "am_roi_perturbed": 0.029934605583548546,
+            "am_roi_repaired": 0.03252832219004631,
+            "delta_am_roi": 0.001683967188000679,
+            "shift_distance": 2.1672777704080746,
+            "shift_y": 1.5895115421643027,
+            "shift_x": -1.4732772961772866,
+            "distance_to_roi": -1.625096600229881,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -1.625096600229881,
+            "dist_to_roi_original_px": 34.514493623664,
+            "dist_to_roi_perturbed_px": 36.13959022389388,
+            "entropy_original": 12.557499885559082,
+            "entropy_perturbed": 12.562949180603027,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 46956,
+          "area_change": 0.05482325742908653,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                41,
+                706,
+                110,
+                909
+              ]
+            },
+            "validation": {
+              "ssim": 0.9888473522445592,
+              "mean_delta": 0.010598658584058285,
+              "std_delta": 0.027661176398396492
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.03240255258666972,
+          "ssim": 0.994820530447591,
+          "intensity_delta": 0.007907772436738014
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.02828367054462433,
+            "am_roi_perturbed": 0.031223047524690628,
+            "am_roi_repaired": 0.03497633337974548,
+            "delta_am_roi": 0.0029393769800662994,
+            "shift_distance": 2.112026070857743,
+            "shift_y": 2.058398983409859,
+            "shift_x": -0.4729141032788675,
+            "distance_to_roi": -0.7167531958457758,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -0.7167531958457758,
+            "dist_to_roi_original_px": 34.74746726196038,
+            "dist_to_roi_perturbed_px": 35.46422045780616,
+            "entropy_original": 12.557499885559082,
+            "entropy_perturbed": 12.5663423538208,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 50467,
+          "area_change": 0.07118223203200441,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                40,
+                707,
+                109,
+                910
+              ]
+            },
+            "validation": {
+              "ssim": 0.9872054498577644,
+              "mean_delta": 0.01281777210533619,
+              "std_delta": 0.02824145182967186
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.036945479145894446,
+          "ssim": 0.9940310519041943,
+          "intensity_delta": 0.009530679322779179
+        }
+      }
+    },
+    "JPCNN041": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9835021423539189,
+        "mask_pred_sum": 348664,
+        "mask_gt_sum": 344032,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.07747396019258304,
+          "insertion_auc": 0.27909609597845697,
+          "deletion_score_0": 0.33307507634162903,
+          "insertion_score_0": 0.000605738430749625,
+          "robustness_corr_mean": 0.997269449415286,
+          "robustness_corr_std": 0.0001360089828722143,
+          "robustness_corr_mask_n": 348664,
+          "boundary_deletion_auc": 0.3493166334927082,
+          "boundary_insertion_auc": 0.0032600027028820474,
+          "robustness_corr_mean_boundary": 0.9957418615126218,
+          "robustness_corr_std_boundary": 0.0004658472586462873,
+          "robustness_corr_mask_n_boundary": 48092,
+          "robustness_corr_mean_full": 0.9996967000136879,
+          "robustness_corr_std_full": 1.880591397227958e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.025066666305065155,
+            "am_roi_perturbed": 0.019868874922394753,
+            "am_roi_repaired": 0.02744615636765957,
+            "delta_am_roi": -0.0051977913826704025,
+            "shift_distance": 5.1424059500290005,
+            "shift_y": -0.8928465481379817,
+            "shift_x": -5.064302913172924,
+            "distance_to_roi": -1.2884974196187429,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -1.2884974196187429,
+            "dist_to_roi_original_px": 20.53069088306081,
+            "dist_to_roi_perturbed_px": 21.819188302679553,
+            "entropy_original": 12.860579490661621,
+            "entropy_perturbed": 12.850569725036621,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 64018,
+          "area_change": 0.045278548975517974,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                47,
+                997,
+                90,
+                976
+              ]
+            },
+            "validation": {
+              "ssim": 0.9791249817985231,
+              "mean_delta": 0.022337408736348152,
+              "std_delta": 0.04773610085248947
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.051505720941349864,
+          "ssim": 0.984062159114237,
+          "intensity_delta": 0.019366741180419922
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.025079909712076187,
+            "am_roi_perturbed": 0.02129371464252472,
+            "am_roi_repaired": 0.02569025754928589,
+            "delta_am_roi": -0.003786195069551468,
+            "shift_distance": 4.108419675636043,
+            "shift_y": -1.1687998333127325,
+            "shift_x": -3.938657027566819,
+            "distance_to_roi": -1.412274289823447,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -1.412274289823447,
+            "dist_to_roi_original_px": 20.136811228499788,
+            "dist_to_roi_perturbed_px": 21.549085518323235,
+            "entropy_original": 12.860579490661621,
+            "entropy_perturbed": 12.850967407226562,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 68651,
+          "area_change": 0.05846316224215864,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                46,
+                998,
+                89,
+                977
+              ]
+            },
+            "validation": {
+              "ssim": 0.9788905042938961,
+              "mean_delta": 0.014093848876655102,
+              "std_delta": 0.048777464777231216
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.06683868876037498,
+          "ssim": 0.9838009455507049,
+          "intensity_delta": 0.0135871646925807
+        }
+      }
+    },
+    "JPCNN045": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9849193849918877,
+        "mask_pred_sum": 443884,
+        "mask_gt_sum": 438706,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.11941166423639517,
+          "insertion_auc": 0.3460982877164497,
+          "deletion_score_0": 0.4239858388900757,
+          "insertion_score_0": 0.0007080681971274316,
+          "robustness_corr_mean": 0.9964249820018414,
+          "robustness_corr_std": 0.00022137203491966886,
+          "robustness_corr_mask_n": 443884,
+          "boundary_deletion_auc": 0.4342483446002006,
+          "boundary_insertion_auc": 0.005325250684109049,
+          "robustness_corr_mean_boundary": 0.9950465879925292,
+          "robustness_corr_std_boundary": 0.000768055493589868,
+          "robustness_corr_mask_n_boundary": 51240,
+          "robustness_corr_mean_full": 0.9996369710689069,
+          "robustness_corr_std_full": 2.1586891181455572e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.020838484168052673,
+            "am_roi_perturbed": 0.04000811651349068,
+            "am_roi_repaired": 0.02830762043595314,
+            "delta_am_roi": 0.019169632345438004,
+            "shift_distance": 23.840598163529947,
+            "shift_y": 9.788462832872824,
+            "shift_x": 21.73844787845661,
+            "distance_to_roi": 18.780058968020448,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 18.780058968020448,
+            "dist_to_roi_original_px": 37.70522774581866,
+            "dist_to_roi_perturbed_px": 18.925168777798213,
+            "entropy_original": 13.05766487121582,
+            "entropy_perturbed": 13.046196937561035,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 68113,
+          "area_change": 0.03781393336997954,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                0,
+                965,
+                43,
+                976
+              ]
+            },
+            "validation": {
+              "ssim": 0.9428418805594659,
+              "mean_delta": -0.16369376063101007,
+              "std_delta": 0.2821376795476703
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "alpha",
+              "poisson_ok": false,
+              "poisson_error": "OpenCV(4.10.0) /io/opencv/modules/core/src/matrix.cpp:808: error: (-215:Assertion failed) 0 <= roi.x && 0 <= roi.width && roi.x + roi.width <= m.cols && 0 <= roi.y && 0 <= roi.height && roi.y + roi.height <= m.rows in function 'Mat'\n"
+            }
+          },
+          "perceptual_distance": 0.3361796109626691,
+          "ssim": 0.9531050802604504,
+          "intensity_delta": -0.01178808963747166
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.0208605770021677,
+            "am_roi_perturbed": 0.04122199863195419,
+            "am_roi_repaired": 0.02670173905789852,
+            "delta_am_roi": 0.02036142162978649,
+            "shift_distance": 20.8445245252238,
+            "shift_y": 7.912379518829994,
+            "shift_x": 19.284409584756702,
+            "distance_to_roi": 16.420671035170113,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 16.420671035170113,
+            "dist_to_roi_original_px": 37.44298272664668,
+            "dist_to_roi_perturbed_px": 21.02231169147657,
+            "entropy_original": 13.05766487121582,
+            "entropy_perturbed": 13.049702644348145,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 73003,
+          "area_change": 0.04885060060736589,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                0,
+                966,
+                42,
+                977
+              ]
+            },
+            "validation": {
+              "ssim": 0.9406551490996649,
+              "mean_delta": -0.15361990136474313,
+              "std_delta": 0.2829623299992201
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "alpha",
+              "poisson_ok": false,
+              "poisson_error": "OpenCV(4.10.0) /io/opencv/modules/core/src/matrix.cpp:808: error: (-215:Assertion failed) 0 <= roi.x && 0 <= roi.width && roi.x + roi.width <= m.cols && 0 <= roi.y && 0 <= roi.height && roi.y + roi.height <= m.rows in function 'Mat'\n"
+            }
+          },
+          "perceptual_distance": 0.31625395361334085,
+          "ssim": 0.9511522809406363,
+          "intensity_delta": -0.011754693554612979
+        }
+      }
+    },
+    "JPCNN046": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9825385171710839,
+        "mask_pred_sum": 367251,
+        "mask_gt_sum": 362813,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.08016370895202271,
+          "insertion_auc": 0.29217298977309836,
+          "deletion_score_0": 0.3512253165245056,
+          "insertion_score_0": 0.0006386102177202702,
+          "robustness_corr_mean": 0.9967952172136112,
+          "robustness_corr_std": 0.00016569125975874084,
+          "robustness_corr_mask_n": 367251,
+          "boundary_deletion_auc": 0.3635019280016422,
+          "boundary_insertion_auc": 0.005725014273775741,
+          "robustness_corr_mean_boundary": 0.9963377065114951,
+          "robustness_corr_std_boundary": 0.00018558156551184112,
+          "robustness_corr_mask_n_boundary": 48675,
+          "robustness_corr_mean_full": 0.9996891192257474,
+          "robustness_corr_std_full": 1.2929116650186258e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.023051295429468155,
+            "am_roi_perturbed": 0.026493512094020844,
+            "am_roi_repaired": 0.02761448733508587,
+            "delta_am_roi": 0.0034422166645526886,
+            "shift_distance": 1.1522405659248305,
+            "shift_y": -0.36768101697174416,
+            "shift_x": -1.0920022854927538,
+            "distance_to_roi": -0.9744146624651151,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -0.9744146624651151,
+            "dist_to_roi_original_px": 39.03581713378152,
+            "dist_to_roi_perturbed_px": 40.010231796246636,
+            "entropy_original": 12.919354438781738,
+            "entropy_perturbed": 12.926375389099121,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 65072,
+          "area_change": 0.04354242738617458,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                0,
+                884,
+                88,
+                1006
+              ]
+            },
+            "validation": {
+              "ssim": 0.9817720941670702,
+              "mean_delta": -0.00698954239487648,
+              "std_delta": 0.04578541964292526
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.06330245306404929,
+          "ssim": 0.9863177774311327,
+          "intensity_delta": 0.006211821921169758
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.0230580884963274,
+            "am_roi_perturbed": 0.03360002860426903,
+            "am_roi_repaired": 0.025435250252485275,
+            "delta_am_roi": 0.010541940107941628,
+            "shift_distance": 8.778769758546284,
+            "shift_y": 8.778586826786238,
+            "shift_x": 0.05667272837899873,
+            "distance_to_roi": 6.325089974950906,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 6.325089974950906,
+            "dist_to_roi_original_px": 38.77391996682837,
+            "dist_to_roi_perturbed_px": 32.44882999187747,
+            "entropy_original": 12.919354438781738,
+            "entropy_perturbed": 12.909603118896484,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 69877,
+          "area_change": 0.056334768319214926,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                0,
+                885,
+                87,
+                1007
+              ]
+            },
+            "validation": {
+              "ssim": 0.9619466284626861,
+              "mean_delta": -0.012514410510851535,
+              "std_delta": 0.13411987729454256
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "alpha",
+              "poisson_ok": false,
+              "poisson_error": "OpenCV(4.10.0) /io/opencv/modules/core/src/matrix.cpp:808: error: (-215:Assertion failed) 0 <= roi.x && 0 <= roi.width && roi.x + roi.width <= m.cols && 0 <= roi.y && 0 <= roi.height && roi.y + roi.height <= m.rows in function 'Mat'\n"
+            }
+          },
+          "perceptual_distance": 0.13898454963540038,
+          "ssim": 0.9719922029615018,
+          "intensity_delta": -0.0008867128574393297
+        }
+      }
+    },
+    "JPCNN060": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9838289536749389,
+        "mask_pred_sum": 338386,
+        "mask_gt_sum": 333432,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.07392692686116788,
+          "insertion_auc": 0.27995891673490403,
+          "deletion_score_0": 0.32350999116897583,
+          "insertion_score_0": 0.0006742440164089203,
+          "robustness_corr_mean": 0.9957794977672311,
+          "robustness_corr_std": 0.00044262467592209767,
+          "robustness_corr_mask_n": 338386,
+          "boundary_deletion_auc": 0.33337725847959526,
+          "boundary_insertion_auc": 0.006420459900982677,
+          "robustness_corr_mean_boundary": 0.9777771745810796,
+          "robustness_corr_std_boundary": 0.0025027306723573576,
+          "robustness_corr_mask_n_boundary": 46979,
+          "robustness_corr_mean_full": 0.9994962170949598,
+          "robustness_corr_std_full": 3.7720078977343625e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.02353947050869465,
+            "am_roi_perturbed": 0.02288472279906273,
+            "am_roi_repaired": 0.02458813786506653,
+            "delta_am_roi": -0.0006547477096319199,
+            "shift_distance": 2.3197783901886777,
+            "shift_y": -1.6215201378424808,
+            "shift_x": 1.658928636848998,
+            "distance_to_roi": -0.4293555449902229,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -0.4293555449902229,
+            "dist_to_roi_original_px": 44.52953825354041,
+            "dist_to_roi_perturbed_px": 44.95889379853063,
+            "entropy_original": 12.837010383605957,
+            "entropy_perturbed": 12.8396577835083,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 62520,
+          "area_change": 0.04543036650452442,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                53,
+                920,
+                0,
+                975
+              ]
+            },
+            "validation": {
+              "ssim": 0.9902367611061973,
+              "mean_delta": 0.004430519882589579,
+              "std_delta": 0.029323646798729897
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.0481081058193619,
+          "ssim": 0.9924244314527078,
+          "intensity_delta": 0.004893789533525705
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.023548170924186707,
+            "am_roi_perturbed": 0.02164515107870102,
+            "am_roi_repaired": 0.023097673431038857,
+            "delta_am_roi": -0.0019030198454856873,
+            "shift_distance": 3.0702729457230777,
+            "shift_y": -1.2956382533078568,
+            "shift_x": -2.7835045316658693,
+            "distance_to_roi": -2.7075591279061797,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -2.7075591279061797,
+            "dist_to_roi_original_px": 44.49104812421173,
+            "dist_to_roi_perturbed_px": 47.19860725211791,
+            "entropy_original": 12.837010383605957,
+            "entropy_perturbed": 12.836478233337402,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 67243,
+          "area_change": 0.05927845714657226,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                52,
+                921,
+                0,
+                976
+              ]
+            },
+            "validation": {
+              "ssim": 0.9898361197725064,
+              "mean_delta": -0.0028011370450258255,
+              "std_delta": 0.022654030472040176
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.04297248177075138,
+          "ssim": 0.9917661775370403,
+          "intensity_delta": 0.0021964877378195524
+        }
+      }
+    },
+    "JPCNN066": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.973306239414295,
+        "mask_pred_sum": 246256,
+        "mask_gt_sum": 244383,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.045200070418650276,
+          "insertion_auc": 0.20978643252165058,
+          "deletion_score_0": 0.23572072386741638,
+          "insertion_score_0": 0.00046340026892721653,
+          "robustness_corr_mean": 0.9890618293772208,
+          "robustness_corr_std": 0.0013744210721480877,
+          "robustness_corr_mask_n": 246256,
+          "boundary_deletion_auc": 0.23109672851860524,
+          "boundary_insertion_auc": 0.0031189256056677554,
+          "robustness_corr_mean_boundary": 0.9649146121338221,
+          "robustness_corr_std_boundary": 0.007563857994362471,
+          "robustness_corr_mask_n_boundary": 43223,
+          "robustness_corr_mean_full": 0.9985735761092459,
+          "robustness_corr_std_full": 0.00020291786538150232,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.03238498792052269,
+            "am_roi_perturbed": 0.03494711220264435,
+            "am_roi_repaired": 0.047283075749874115,
+            "delta_am_roi": 0.0025621242821216583,
+            "shift_distance": 14.681934276215893,
+            "shift_y": -2.475610518526423,
+            "shift_x": 14.471715401143172,
+            "distance_to_roi": 11.00611992259011,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 11.00611992259011,
+            "dist_to_roi_original_px": 44.49043216137918,
+            "dist_to_roi_perturbed_px": 33.48431223878907,
+            "entropy_original": 12.69461441040039,
+            "entropy_perturbed": 12.690618515014648,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 57633,
+          "area_change": 0.05763920473003704,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                37,
+                832,
+                90,
+                992
+              ]
+            },
+            "validation": {
+              "ssim": 0.9808127890547781,
+              "mean_delta": 0.016628408804535866,
+              "std_delta": 0.03775035962462425
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.060750398552045226,
+          "ssim": 0.9878773451074009,
+          "intensity_delta": 0.014306643046438694
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.032444801181554794,
+            "am_roi_perturbed": 0.036915525794029236,
+            "am_roi_repaired": 0.04607057571411133,
+            "delta_am_roi": 0.0044707246124744415,
+            "shift_distance": 13.820279239267503,
+            "shift_y": -1.2856124199012697,
+            "shift_x": 13.760353155247287,
+            "distance_to_roi": 11.20573433537323,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 11.20573433537323,
+            "dist_to_roi_original_px": 44.38879809637005,
+            "dist_to_roi_perturbed_px": 33.18306376099682,
+            "entropy_original": 12.69461441040039,
+            "entropy_perturbed": 12.681479454040527,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 61910,
+          "area_change": 0.07505197842895199,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                36,
+                833,
+                89,
+                993
+              ]
+            },
+            "validation": {
+              "ssim": 0.981846266484374,
+              "mean_delta": 0.017117511481046677,
+              "std_delta": 0.034401532262563705
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.05807892015824715,
+          "ssim": 0.9884760491378476,
+          "intensity_delta": 0.014763113111257553
+        }
+      }
+    },
+    "JPCNN068": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9795639613861068,
+        "mask_pred_sum": 202511,
+        "mask_gt_sum": 198692,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.04946354012936354,
+          "insertion_auc": 0.19614891824312508,
+          "deletion_score_0": 0.19378411769866943,
+          "insertion_score_0": 0.0006685126572847366,
+          "robustness_corr_mean": 0.9963526587304058,
+          "robustness_corr_std": 0.0003093724345241328,
+          "robustness_corr_mask_n": 202511,
+          "boundary_deletion_auc": 0.2003722861409187,
+          "boundary_insertion_auc": 0.003184639452956617,
+          "robustness_corr_mean_boundary": 0.9953516732806524,
+          "robustness_corr_std_boundary": 0.0009689989249191973,
+          "robustness_corr_mask_n_boundary": 33070,
+          "robustness_corr_mean_full": 0.9994292268188153,
+          "robustness_corr_std_full": 3.247888111106382e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.026567062363028526,
+            "am_roi_perturbed": 0.03278207406401634,
+            "am_roi_repaired": 0.029331354424357414,
+            "delta_am_roi": 0.006215011700987816,
+            "shift_distance": 1.5097988871439474,
+            "shift_y": -1.221488799708709,
+            "shift_x": 0.8873881855238324,
+            "distance_to_roi": 1.373183023940765,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 1.373183023940765,
+            "dist_to_roi_original_px": 25.987416413768962,
+            "dist_to_roi_perturbed_px": 24.614233389828197,
+            "entropy_original": 12.503009796142578,
+            "entropy_perturbed": 12.505926132202148,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 44182,
+          "area_change": 0.05356252252964037,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                29,
+                655,
+                166,
+                892
+              ]
+            },
+            "validation": {
+              "ssim": 0.9819065171050972,
+              "mean_delta": 0.0031221129465848207,
+              "std_delta": 0.029059862717986107
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.03775584992642204,
+          "ssim": 0.9929154303977541,
+          "intensity_delta": 0.0028536703903228045
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.02656758576631546,
+            "am_roi_perturbed": 0.036268919706344604,
+            "am_roi_repaired": 0.030300050973892212,
+            "delta_am_roi": 0.009701333940029144,
+            "shift_distance": 0.746574678130514,
+            "shift_y": -0.678673478631481,
+            "shift_x": 0.3110885073864438,
+            "distance_to_roi": 0.6068957811047788,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 0.6068957811047788,
+            "dist_to_roi_original_px": 26.243130577565772,
+            "dist_to_roi_perturbed_px": 25.636234796460993,
+            "entropy_original": 12.503009796142578,
+            "entropy_perturbed": 12.512516975402832,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 47490,
+          "area_change": 0.06954683943094449,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                28,
+                656,
+                165,
+                893
+              ]
+            },
+            "validation": {
+              "ssim": 0.9810019311750175,
+              "mean_delta": 0.004166243597865105,
+              "std_delta": 0.029218105599284172
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.04096657072659582,
+          "ssim": 0.9925216295460547,
+          "intensity_delta": 0.0033321643713861704
+        }
+      }
+    },
+    "JPCNN069": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9855982688722774,
+        "mask_pred_sum": 385435,
+        "mask_gt_sum": 381695,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.08589758124726359,
+          "insertion_auc": 0.30418407687975557,
+          "deletion_score_0": 0.3682405352592468,
+          "insertion_score_0": 0.0008963622385635972,
+          "robustness_corr_mean": 0.9961505945754848,
+          "robustness_corr_std": 0.00024216142476505246,
+          "robustness_corr_mask_n": 385435,
+          "boundary_deletion_auc": 0.3751613348722458,
+          "boundary_insertion_auc": 0.001601806536200456,
+          "robustness_corr_mean_boundary": 0.9962520511997933,
+          "robustness_corr_std_boundary": 0.00043439090043526443,
+          "robustness_corr_mask_n_boundary": 45997,
+          "robustness_corr_mean_full": 0.9996373617548665,
+          "robustness_corr_std_full": 1.5632003050354435e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.020158084109425545,
+            "am_roi_perturbed": 0.02193748578429222,
+            "am_roi_repaired": 0.019123705103993416,
+            "delta_am_roi": 0.0017794016748666763,
+            "shift_distance": 2.4645128667556446,
+            "shift_y": 0.7581868242179439,
+            "shift_x": 2.34498963963307,
+            "distance_to_roi": 1.8290553707362847,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 1.8290553707362847,
+            "dist_to_roi_original_px": 35.54465422775092,
+            "dist_to_roi_perturbed_px": 33.71559885701463,
+            "entropy_original": 12.921361923217773,
+            "entropy_perturbed": 12.919431686401367,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 61294,
+          "area_change": 0.038994901864127546,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                76,
+                981,
+                50,
+                938
+              ]
+            },
+            "validation": {
+              "ssim": 0.988503413960012,
+              "mean_delta": -0.00961761362850666,
+              "std_delta": 0.030856162309646606
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.02044195371369521,
+          "ssim": 0.991543576493072,
+          "intensity_delta": -0.006101825274527073
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.020158572122454643,
+            "am_roi_perturbed": 0.023976990953087807,
+            "am_roi_repaired": 0.020383605733513832,
+            "delta_am_roi": 0.0038184188306331635,
+            "shift_distance": 1.5640530873946217,
+            "shift_y": 0.09836161409651822,
+            "shift_x": 1.560957095201843,
+            "distance_to_roi": 0.8774577855843333,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 0.8774577855843333,
+            "dist_to_roi_original_px": 35.47172659471022,
+            "dist_to_roi_perturbed_px": 34.594268809125886,
+            "entropy_original": 12.921361923217773,
+            "entropy_perturbed": 12.922358512878418,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 65851,
+          "area_change": 0.05063369958618184,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                75,
+                982,
+                49,
+                939
+              ]
+            },
+            "validation": {
+              "ssim": 0.987296419751512,
+              "mean_delta": -0.007235466502606869,
+              "std_delta": 0.03249011188745499
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.022929763110975426,
+          "ssim": 0.9906789283344497,
+          "intensity_delta": -0.0034497869201004505
+        }
+      }
+    },
+    "JPCNN078": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9850234594493998,
+        "mask_pred_sum": 285410,
+        "mask_gt_sum": 285149,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.06197599153092598,
+          "insertion_auc": 0.23938091015734245,
+          "deletion_score_0": 0.2729370594024658,
+          "insertion_score_0": 0.0005943068535998464,
+          "robustness_corr_mean": 0.9964593699304545,
+          "robustness_corr_std": 0.0003012352266960671,
+          "robustness_corr_mask_n": 285410,
+          "boundary_deletion_auc": 0.28289409428834916,
+          "boundary_insertion_auc": 0.006594852570560761,
+          "robustness_corr_mean_boundary": 0.9971319356182322,
+          "robustness_corr_std_boundary": 0.0003922341135600016,
+          "robustness_corr_mask_n_boundary": 44725,
+          "robustness_corr_mean_full": 0.9995701238947521,
+          "robustness_corr_std_full": 2.343768062240884e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.02894623950123787,
+            "am_roi_perturbed": 0.032679617404937744,
+            "am_roi_repaired": 0.0320846363902092,
+            "delta_am_roi": 0.003733377903699875,
+            "shift_distance": 5.452652005127703,
+            "shift_y": 1.2948245536102263,
+            "shift_x": -5.296682288413308,
+            "distance_to_roi": -3.705785959875051,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -3.705785959875051,
+            "dist_to_roi_original_px": 47.5150259450055,
+            "dist_to_roi_perturbed_px": 51.22081190488055,
+            "entropy_original": 12.693412780761719,
+            "entropy_perturbed": 12.697898864746094,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 59625,
+          "area_change": 0.051329666094390526,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                35,
+                927,
+                149,
+                964
+              ]
+            },
+            "validation": {
+              "ssim": 0.9798659001185027,
+              "mean_delta": 0.02287723310291767,
+              "std_delta": 0.04225527495145798
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.04321408846105138,
+          "ssim": 0.9868752804354741,
+          "intensity_delta": 0.017026569694280624
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.02895713970065117,
+            "am_roi_perturbed": 0.033389270305633545,
+            "am_roi_repaired": 0.03199370205402374,
+            "delta_am_roi": 0.004432130604982376,
+            "shift_distance": 4.016924432858326,
+            "shift_y": 0.39680832649429476,
+            "shift_x": -3.9972772047131,
+            "distance_to_roi": -3.099866026706316,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -3.099866026706316,
+            "dist_to_roi_original_px": 47.22870973996,
+            "dist_to_roi_perturbed_px": 50.32857576666632,
+            "entropy_original": 12.693412780761719,
+            "entropy_perturbed": 12.700551986694336,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 64044,
+          "area_change": 0.06656038681195474,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                34,
+                928,
+                148,
+                965
+              ]
+            },
+            "validation": {
+              "ssim": 0.9779406378857088,
+              "mean_delta": 0.025600722059607506,
+              "std_delta": 0.043568603694438934
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.047933771197373666,
+          "ssim": 0.9855686512185182,
+          "intensity_delta": 0.018886946141719818
+        }
+      }
+    },
+    "JPCNN081": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9796086408989509,
+        "mask_pred_sum": 395072,
+        "mask_gt_sum": 389476,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.09949057611083845,
+          "insertion_auc": 0.3158475289950729,
+          "deletion_score_0": 0.37746554613113403,
+          "insertion_score_0": 0.0008556764223612845,
+          "robustness_corr_mean": 0.9938081837225416,
+          "robustness_corr_std": 0.001091720965465658,
+          "robustness_corr_mask_n": 395072,
+          "boundary_deletion_auc": 0.3828900694847107,
+          "boundary_insertion_auc": 0.003605054515355733,
+          "robustness_corr_mean_boundary": 0.9904213471383964,
+          "robustness_corr_std_boundary": 0.002569259742695514,
+          "robustness_corr_mask_n_boundary": 48710,
+          "robustness_corr_mean_full": 0.9993574633223495,
+          "robustness_corr_std_full": 9.977963968882992e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.022095149382948875,
+            "am_roi_perturbed": 0.027682140469551086,
+            "am_roi_repaired": 0.02348109893500805,
+            "delta_am_roi": 0.005586991086602211,
+            "shift_distance": 23.624554446311905,
+            "shift_y": 9.698197889179824,
+            "shift_x": -21.542157052836274,
+            "distance_to_roi": -7.725579567817277,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -7.725579567817277,
+            "dist_to_roi_original_px": 36.27264686444257,
+            "dist_to_roi_perturbed_px": 43.99822643225985,
+            "entropy_original": 12.966299057006836,
+            "entropy_perturbed": 12.936385154724121,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 65083,
+          "area_change": 0.04065841163129759,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                0,
+                958,
+                74,
+                1024
+              ]
+            },
+            "validation": {
+              "ssim": 0.9616442613794098,
+              "mean_delta": -0.03918496887901883,
+              "std_delta": 0.15900695195700285
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "alpha",
+              "poisson_ok": false,
+              "poisson_error": "OpenCV(4.10.0) /io/opencv/modules/core/src/matrix.cpp:808: error: (-215:Assertion failed) 0 <= roi.x && 0 <= roi.width && roi.x + roi.width <= m.cols && 0 <= roi.y && 0 <= roi.height && roi.y + roi.height <= m.rows in function 'Mat'\n"
+            }
+          },
+          "perceptual_distance": 0.13637727374831835,
+          "ssim": 0.9679567144940282,
+          "intensity_delta": -0.002646248281621874
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.022108018398284912,
+            "am_roi_perturbed": 0.025842510163784027,
+            "am_roi_repaired": 0.02377856709063053,
+            "delta_am_roi": 0.003734491765499115,
+            "shift_distance": 24.083631197102278,
+            "shift_y": 3.22235994246455,
+            "shift_x": -23.86708377743787,
+            "distance_to_roi": -13.342968893639686,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -13.342968893639686,
+            "dist_to_roi_original_px": 35.922594997811565,
+            "dist_to_roi_perturbed_px": 49.26556389145125,
+            "entropy_original": 12.966299057006836,
+            "entropy_perturbed": 12.929863929748535,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 69735,
+          "area_change": 0.052266422323019604,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                0,
+                959,
+                73,
+                1024
+              ]
+            },
+            "validation": {
+              "ssim": 0.9554718157405739,
+              "mean_delta": -0.035413715689204546,
+              "std_delta": 0.18413250964697017
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "alpha",
+              "poisson_ok": false,
+              "poisson_error": "OpenCV(4.10.0) /io/opencv/modules/core/src/matrix.cpp:808: error: (-215:Assertion failed) 0 <= roi.x && 0 <= roi.width && roi.x + roi.width <= m.cols && 0 <= roi.y && 0 <= roi.height && roi.y + roi.height <= m.rows in function 'Mat'\n"
+            }
+          },
+          "perceptual_distance": 0.21969797958930334,
+          "ssim": 0.9626768074483417,
+          "intensity_delta": -0.0025405083802089567
+        }
+      }
+    },
+    "JPCNN082": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9814813257278032,
+        "mask_pred_sum": 300233,
+        "mask_gt_sum": 294248,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.05597825088043464,
+          "insertion_auc": 0.2524557963668485,
+          "deletion_score_0": 0.28705447912216187,
+          "insertion_score_0": 0.0005344551173038781,
+          "robustness_corr_mean": 0.9973192713119325,
+          "robustness_corr_std": 9.93855176958245e-05,
+          "robustness_corr_mask_n": 300233,
+          "boundary_deletion_auc": 0.2984434589743614,
+          "boundary_insertion_auc": 0.00876269325526664,
+          "robustness_corr_mean_boundary": 0.9966990226556751,
+          "robustness_corr_std_boundary": 0.0002930205819685067,
+          "robustness_corr_mask_n_boundary": 42795,
+          "robustness_corr_mean_full": 0.9996996903656642,
+          "robustness_corr_std_full": 9.160645263117095e-06,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.023976337164640427,
+            "am_roi_perturbed": 0.027349578216671944,
+            "am_roi_repaired": 0.027839260175824165,
+            "delta_am_roi": 0.003373241052031517,
+            "shift_distance": 5.080852396134684,
+            "shift_y": 0.7604657613644576,
+            "shift_x": -5.023619501624296,
+            "distance_to_roi": -3.911549097271383,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -3.911549097271383,
+            "dist_to_roi_original_px": 33.91518314291001,
+            "dist_to_roi_perturbed_px": 37.82673224018139,
+            "entropy_original": 12.782085418701172,
+            "entropy_perturbed": 12.785636901855469,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 57129,
+          "area_change": 0.04684028737680401,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                0,
+                825,
+                17,
+                950
+              ]
+            },
+            "validation": {
+              "ssim": 0.9779019323437035,
+              "mean_delta": 0.008038154803216457,
+              "std_delta": 0.033024463802576065
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.09445717558264732,
+          "ssim": 0.9843973319427486,
+          "intensity_delta": 0.006676197983324528
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.023988027125597,
+            "am_roi_perturbed": 0.02714793011546135,
+            "am_roi_repaired": 0.02790212072432041,
+            "delta_am_roi": 0.0031599029898643494,
+            "shift_distance": 4.486034692166154,
+            "shift_y": 0.7651458067352337,
+            "shift_x": -4.420300799012864,
+            "distance_to_roi": -3.3964209860460883,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -3.3964209860460883,
+            "dist_to_roi_original_px": 34.019747934563966,
+            "dist_to_roi_perturbed_px": 37.416168920610055,
+            "entropy_original": 12.782085418701172,
+            "entropy_perturbed": 12.787029266357422,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 61337,
+          "area_change": 0.06062291620174998,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                0,
+                826,
+                16,
+                951
+              ]
+            },
+            "validation": {
+              "ssim": 0.9775196721343962,
+              "mean_delta": 0.010213712230324745,
+              "std_delta": 0.033856090158224106
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.1065031251249214,
+          "ssim": 0.9840005048707107,
+          "intensity_delta": 0.009080843068659306
+        }
+      }
+    },
+    "JPCNN084": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9769924998606248,
+        "mask_pred_sum": 275298,
+        "mask_gt_sum": 280825,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.0710110781088588,
+          "insertion_auc": 0.25104284736589766,
+          "deletion_score_0": 0.26334714889526367,
+          "insertion_score_0": 0.0007870954577811062,
+          "robustness_corr_mean": 0.9972912667488298,
+          "robustness_corr_std": 0.00019662242863967654,
+          "robustness_corr_mask_n": 275298,
+          "boundary_deletion_auc": 0.26942401081323625,
+          "boundary_insertion_auc": 0.0041611579843447545,
+          "robustness_corr_mean_boundary": 0.99605613017118,
+          "robustness_corr_std_boundary": 0.0009012078475096346,
+          "robustness_corr_mask_n_boundary": 42529,
+          "robustness_corr_mean_full": 0.9996547523208644,
+          "robustness_corr_std_full": 2.5072954915458298e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.027325382456183434,
+            "am_roi_perturbed": 0.03313034400343895,
+            "am_roi_repaired": 0.029249688610434532,
+            "delta_am_roi": 0.005804961547255516,
+            "shift_distance": 2.1893481366929106,
+            "shift_y": 0.6246524880303355,
+            "shift_x": -2.0983456657181705,
+            "distance_to_roi": -1.3451882640461967,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -1.3451882640461967,
+            "dist_to_roi_original_px": 21.404664111280173,
+            "dist_to_roi_perturbed_px": 22.74985237532637,
+            "entropy_original": 12.656488418579102,
+            "entropy_perturbed": 12.668261528015137,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 56953,
+          "area_change": 0.05096658893272018,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                49,
+                870,
+                160,
+                924
+              ]
+            },
+            "validation": {
+              "ssim": 0.9770878650527668,
+              "mean_delta": 0.02164709009230137,
+              "std_delta": 0.048440173268318176
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.04179890100688984,
+          "ssim": 0.9873086398473957,
+          "intensity_delta": 0.015052525326609612
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.027344955131411552,
+            "am_roi_perturbed": 0.03377367556095123,
+            "am_roi_repaired": 0.031460028141736984,
+            "delta_am_roi": 0.0064287204295396805,
+            "shift_distance": 4.704154647299596,
+            "shift_y": 0.7364764009769829,
+            "shift_x": 4.6461460864370565,
+            "distance_to_roi": 4.012485349062757,
+            "directional_consistency": 1.0,
+            "forward_movement_px": 4.012485349062757,
+            "dist_to_roi_original_px": 21.304954595145208,
+            "dist_to_roi_perturbed_px": 17.29246924608245,
+            "entropy_original": 12.656488418579102,
+            "entropy_perturbed": 12.662595748901367,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 61080,
+          "area_change": 0.06576873061191872,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                48,
+                871,
+                159,
+                925
+              ]
+            },
+            "validation": {
+              "ssim": 0.9568990379888099,
+              "mean_delta": 0.04593673720955849,
+              "std_delta": 0.06043687462806702
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.06042995823857685,
+          "ssim": 0.976107365660144,
+          "intensity_delta": 0.03680314123630524
+        }
+      }
+    },
+    "JPCNN089": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9894335700675445,
+        "mask_pred_sum": 436934,
+        "mask_gt_sum": 434789,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.1133318820910063,
+          "insertion_auc": 0.34130610222346147,
+          "deletion_score_0": 0.417310506105423,
+          "insertion_score_0": 0.0006215178873389959,
+          "robustness_corr_mean": 0.9960249893680615,
+          "robustness_corr_std": 0.0004921736003384539,
+          "robustness_corr_mask_n": 436934,
+          "boundary_deletion_auc": 0.42971360906958583,
+          "boundary_insertion_auc": 0.001762456458527595,
+          "robustness_corr_mean_boundary": 0.9963687948836256,
+          "robustness_corr_std_boundary": 0.000507197500272708,
+          "robustness_corr_mask_n_boundary": 51424,
+          "robustness_corr_mean_full": 0.9996341723704508,
+          "robustness_corr_std_full": 3.8928217636465e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.021464968100190163,
+            "am_roi_perturbed": 0.020958224311470985,
+            "am_roi_repaired": 0.020770035684108734,
+            "delta_am_roi": -0.0005067437887191772,
+            "shift_distance": 3.7429060533080123,
+            "shift_y": -1.9594366994839447,
+            "shift_x": -3.1890364602188583,
+            "distance_to_roi": -2.9315623730828335,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -2.9315623730828335,
+            "dist_to_roi_original_px": 40.64170465211281,
+            "dist_to_roi_perturbed_px": 43.57326702519564,
+            "entropy_original": 13.050493240356445,
+            "entropy_perturbed": 13.051924705505371,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 68573,
+          "area_change": 0.03862597097044405,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                4,
+                996,
+                42,
+                1004
+              ]
+            },
+            "validation": {
+              "ssim": 0.9826688752001211,
+              "mean_delta": -0.007345313206315041,
+              "std_delta": 0.038283202797174454
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.06443239426395546,
+          "ssim": 0.984440080425285,
+          "intensity_delta": 0.0018625186057761312
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.021469566971063614,
+            "am_roi_perturbed": 0.020182687789201736,
+            "am_roi_repaired": 0.02105608582496643,
+            "delta_am_roi": -0.0012868791818618774,
+            "shift_distance": 3.813730267751352,
+            "shift_y": -0.9935633175290377,
+            "shift_x": -3.682033472040075,
+            "distance_to_roi": -2.2439630154412242,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -2.2439630154412242,
+            "dist_to_roi_original_px": 40.09391877109032,
+            "dist_to_roi_perturbed_px": 42.33788178653155,
+            "entropy_original": 13.050493240356445,
+            "entropy_perturbed": 13.052091598510742,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 73520,
+          "area_change": 0.049790128486224466,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                3,
+                997,
+                41,
+                1005
+              ]
+            },
+            "validation": {
+              "ssim": 0.9797030848473838,
+              "mean_delta": -0.004590453114360571,
+              "std_delta": 0.04178721457719803
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.06516884244047105,
+          "ssim": 0.9818233047185381,
+          "intensity_delta": 0.006440042518079281
+        }
+      }
+    },
+    "JPCNN091": {
+      "_sample_metadata": {
+        "dice_pred_vs_gt": 0.9841034883937497,
+        "mask_pred_sum": 377644,
+        "mask_gt_sum": 373590,
+        "mask_source": "pred"
+      },
+      "multi_layer_cam": {
+        "baseline_metrics": {
+          "deletion_auc": 0.09418360110139473,
+          "insertion_auc": 0.3014183535939083,
+          "deletion_score_0": 0.3609137237071991,
+          "insertion_score_0": 0.0006600832566618919,
+          "robustness_corr_mean": 0.9960051567387697,
+          "robustness_corr_std": 0.0003204942205409459,
+          "robustness_corr_mask_n": 377644,
+          "boundary_deletion_auc": 0.36934583932161325,
+          "boundary_insertion_auc": 0.006058210681658237,
+          "robustness_corr_mean_boundary": 0.9933278819585638,
+          "robustness_corr_std_boundary": 0.0024976519366296875,
+          "robustness_corr_mask_n_boundary": 49658,
+          "robustness_corr_mean_full": 0.9996317960403719,
+          "robustness_corr_std_full": 3.6127694308848894e-05,
+          "robustness_corr_mask_n_full": 1048576
+        },
+        "dilate_r4": {
+          "config": {
+            "radius_px": 4,
+            "operation": "dilate",
+            "desc": "Dilate r=4"
+          },
+          "metrics": {
+            "am_roi_original": 0.02418701909482479,
+            "am_roi_perturbed": 0.027668442577123642,
+            "am_roi_repaired": 0.030705459415912628,
+            "delta_am_roi": 0.003481423482298851,
+            "shift_distance": 0.6666579094367177,
+            "shift_y": -0.6665126171304223,
+            "shift_x": 0.013917593918847615,
+            "distance_to_roi": -0.6072902918283702,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -0.6072902918283702,
+            "dist_to_roi_original_px": 39.58634493026585,
+            "dist_to_roi_perturbed_px": 40.19363522209422,
+            "entropy_original": 12.925325393676758,
+            "entropy_perturbed": 12.930618286132812,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 66199,
+          "area_change": 0.04311997542659224,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                83,
+                1024,
+                74,
+                938
+              ]
+            },
+            "validation": {
+              "ssim": 0.9825456618118008,
+              "mean_delta": 0.003499134909361601,
+              "std_delta": 0.04305889829993248
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.04700572163953135,
+          "ssim": 0.9867236120985076,
+          "intensity_delta": 0.0072957915253937244
+        },
+        "dilate_r5": {
+          "config": {
+            "radius_px": 5,
+            "operation": "dilate",
+            "desc": "Dilate r=5"
+          },
+          "metrics": {
+            "am_roi_original": 0.024195823818445206,
+            "am_roi_perturbed": 0.02530360408127308,
+            "am_roi_repaired": 0.029497956857085228,
+            "delta_am_roi": 0.0011077802628278732,
+            "shift_distance": 0.3711190055557603,
+            "shift_y": -0.3607081390043163,
+            "shift_x": -0.08728662406542753,
+            "distance_to_roi": -0.36556075573652436,
+            "directional_consistency": 0.0,
+            "forward_movement_px": -0.36556075573652436,
+            "dist_to_roi_original_px": 39.51128207928768,
+            "dist_to_roi_perturbed_px": 39.876842835024206,
+            "entropy_original": 12.925325393676758,
+            "entropy_perturbed": 12.924149513244629,
+            "has_directional_roi": 0.0,
+            "operation": null
+          },
+          "roi_pixels": 71022,
+          "area_change": 0.05571119890690703,
+          "edit_metadata": {
+            "warp": {
+              "warp_applied": true,
+              "n_points": 160,
+              "bbox": [
+                82,
+                1024,
+                73,
+                939
+              ]
+            },
+            "validation": {
+              "ssim": 0.9808093713242363,
+              "mean_delta": 0.0025661755353212357,
+              "std_delta": 0.04529665410518646
+            },
+            "blend": {
+              "requested": "poisson",
+              "used": "poisson",
+              "poisson_ok": true
+            }
+          },
+          "perceptual_distance": 0.053776674050216876,
+          "ssim": 0.9854140133060396,
+          "intensity_delta": 0.008456498384475708
+        }
+      }
+    }
+  },
+  "poisson_blend": {
+    "total_edits": 76,
+    "poisson_requested": 76,
+    "poisson_used": 67,
+    "poisson_failed": 9,
+    "validation_fallback": 0,
+    "by_method": {
+      "multi_layer_cam": {
+        "total_edits": 76,
+        "poisson_requested": 76,
+        "poisson_used": 67,
+        "poisson_failed": 9,
+        "validation_fallback": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data and models (large files)
+data/
+runs/
+outputs/
+*.pt
+*.pth
+*.onnx
+*.h5
+
+# Logs and caches
+logs/
+*.log
+.cache/
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Manuscript (not distributed with code)
+manuscript/
+submissions/
